@@ -1,0 +1,289 @@
+.main {
+    max-height: max-content;
+    min-height: 150vh;
+    background: rgb(246, 255, 232);
+    background: linear-gradient(236deg, rgba(246, 255, 232, 1) 0%, rgba(165, 231, 199, 1) 100%);
+    padding: 10px;
+
+    &__hero {
+        display: flex;
+        flex-direction: row;
+        margin-left: 30px;
+        margin-right: 30px;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        gap: 30px;
+        position: relative;
+        z-index: 1;
+
+        .content {
+            width: 665px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            button {
+                width: max-content;
+            }
+        }
+
+        .imageContent {
+            bottom: 0;
+            z-index: -1;
+        }
+
+        @media screen and (max-width: 600px) {
+            .content {
+                h1 {
+                    font-size: 40px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+
+                button {
+                    width: max-content;
+                }
+            }
+
+            .imageContent {
+                display: none;
+            }
+        }
+    }
+
+    .card {
+        margin: auto;
+        width: 90%;
+        height: max-content;
+        padding: 15px;
+        border-radius: 14px;
+        background: rgb(26, 102, 82);
+        background: linear-gradient(105deg, rgba(26, 102, 82, 1) 20%, rgba(54, 181, 151, 1) 200%);
+
+        &__container {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+        }
+
+        &__textContent {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 80%;
+
+            h1 {
+                color: $white;
+                font-size: 35px;
+            }
+
+            p {
+                color: $white;
+            }
+        }
+
+        @media screen and (max-width : 600px) {
+            width: 90%;
+
+            &__container {
+                grid-template-columns: 1fr;
+
+            }
+
+            &__textContent {
+                width: 100%;
+                text-align: center;
+
+                h1 {
+                    font-size: 32px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
+
+            &__imageSwipper {
+                width: 100%;
+                margin-top: 20px;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+    }
+
+    @media screen and (max-width:800px) {
+        .card {
+            &__container {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+    }
+}
+
+
+// About
+.about {
+    background-image: url('/assets/Background/TopBackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -500px;
+    min-height: 60vh;
+    max-height: max-content;
+    margin-bottom: 30px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+
+        .LContent {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 8px;
+            gap: 10px;
+
+            .primary_button {
+                margin-top: 20px;
+            }
+        }
+
+        .RContent {
+            width: 10%;
+
+            .logoMulon {
+                object-fit: contain;
+
+            }
+        }
+    }
+
+    @media screen and (max-width : 600px) {
+        &__wrapper {
+            margin: 20px;
+
+            .RContent {
+                object-fit: contain;
+            }
+
+            .LContent {
+                display: flex;
+                gap: 20px;
+
+                h1 {
+                    font-size: 40px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+//section
+
+.sectionContanier {
+    max-height: max-content;
+    min-height: 60vh;
+    width: 90%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    justify-content: center;
+    margin: auto;
+
+    &__image {
+        width: 90%;
+    }
+
+    &__param {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h1 {
+            font-size: 40px;
+        }
+    }
+
+    @media screen and (max-width : 780px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+        &__param {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h1 {
+                font-size: 26px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+//services
+
+.services {
+    height: 80vh;
+    width: 90%;
+    margin: auto;
+    background-image: url('/asset/vector/eclipsTop.svg');
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: top;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    @media screen and (max-width :780px) {
+        width: 90%;
+        margin: auto;
+        &__param {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 20px;
+            h1 {
+                font-size: 26px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}
