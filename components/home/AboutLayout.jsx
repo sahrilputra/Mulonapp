@@ -6,6 +6,8 @@ import Image from 'next/image';
 import CardServices from './cards/CardServices';
 import TimeLines from './timeline/TimeLines';
 import Feedback from './Feedback';
+import BlogSection from './blogComponents/BlogSection';
+import MediaContainer from './MediaContainer/MediaContainer';
 const AboutLayout = () => {
     return (
         <>
@@ -71,7 +73,8 @@ const AboutLayout = () => {
                     </div>
                 </div>
             </section>
-
+            <div className="break">
+            </div>
             <section>
                 <h1 className="text-center m-5">Cara
                     <span className='secondary'> Pesan</span>
@@ -95,9 +98,58 @@ const AboutLayout = () => {
                 </div>
             </section>
 
+            <div className="break"></div>
 
             <section>
                 <Feedback />
+            </section>
+
+            {/* Break */}
+            <div className="break"></div>
+
+            <div className={styles.promo}>
+                <div className={styles.promo__left}>
+                    <Image
+                        src={"/assets/gambar1.png"}
+                        alt='illustrasi gambar'
+                        width={560}
+                        height={476}
+                    />
+                </div>
+
+                <div className={styles.promo__right}>
+                    <h1>Hubungi kami sekarang dan dapatkan banyak <span className='secondary'> Promo Menarik</span></h1>
+                    <p className='bodyText'>
+                        Hubungi Kami sekarang dan dapatkan banyak potongan harga pengangkutan sampah sampai dengan 50% khusus daerah Kupang
+                    </p>
+                    <button className='primary_button'>Hubungi Kami Sekarang</button>
+                </div>
+            </div>
+
+            {/* Break */}
+            <div className="break"></div>
+
+            <section className={styles.blog}>
+                <BlogSection />
+            </section>
+
+            {/* Break */}
+
+            <section>
+                <div className={styles.socialContainer}>
+                    <h1>Temui <span className="secondary">Kami</span></h1>
+                    <MediaContainer />
+                    <div className={styles.socialBottom}>
+                        <Image
+                            className={styles.socialImage}
+                            src={"/assets/vector/greenWorld.svg"}
+                            width={970}
+                            height={210}
+                            object-fit={"contain"}
+                            alt={"clean worlds"}
+                        />
+                    </div>
+                </div>
             </section>
         </>
     )
