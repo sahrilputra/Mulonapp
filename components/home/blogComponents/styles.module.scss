@@ -12,6 +12,7 @@
     text-align: center;
     justify-content: center;
     margin-top: 30px;
+    gap: 30px;
 }
 
 .blog__wrapper {
@@ -20,6 +21,8 @@
     flex-wrap: wrap;
     overflow: hidden;
     justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
 }
 
 
@@ -69,4 +72,15 @@
 .container:hover {
     background-color: #ffff;
     box-shadow: 27px 6px 60px 0px rgba(166, 166, 166, 0.24);
+}
+
+@media screen and (max-width: 760px) {
+    .blog {
+        h1 {
+            font-size: 40px;
+        }
+    }
+    .blog__wrapper{
+        zoom: 70%;
+    }
 }

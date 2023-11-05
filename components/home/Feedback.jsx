@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './feedback.module.scss'
 import CardQuote from './quotes/cardQuote';
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwipperQuote from './quotes/SwipperQuote';
 const Feedback = () => {
     return (
         <>
@@ -8,8 +10,10 @@ const Feedback = () => {
                 <div className={styles.feed__container}>
 
                     <div className={styles.feed__wrapper}>
-                        <CardQuote />
-                        <CardQuote />
+                        <Swiper className={styles.swiper}>
+                           <SwipperQuote />
+                        </Swiper>
+
                     </div>
 
                     <div className={styles.feed__param}>

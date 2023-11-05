@@ -60,6 +60,8 @@ const AboutLayout = () => {
                 </div>
             </section>
 
+            {/* Break */}
+            <div className="break"></div>
             <section>
                 <div className={styles.services}>
                     <div className={styles.services__param}>
@@ -73,8 +75,13 @@ const AboutLayout = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Break */}
             <div className="break">
             </div>
+            
+            {/* Break */}
+            <div className="break"></div>
             <section>
                 <h1 className="text-center m-5">Cara
                     <span className='secondary'> Pesan</span>

@@ -34,12 +34,4 @@
         }
     }
 
-    &:hover .container__imageSpan {
-        z-index: 1; // Set z-index higher on hover to display the box-shadow on top
-        box-shadow: 2px -122px 67px -59px rgba(0, 108, 110, 0.69) inset;
-    }
-
-    &:hover {
-        cursor: pointer;
-    }
 }
