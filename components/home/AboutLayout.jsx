@@ -62,6 +62,7 @@ const AboutLayout = () => {
 
             {/* Break */}
             <div className="break"></div>
+            {/* Services */}
             <section>
                 <div className={styles.services}>
                     <div className={styles.services__param}>
@@ -69,19 +70,19 @@ const AboutLayout = () => {
                         <p className="bodyText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat magnam expedita ipsam. Quam, nisi dignissimos.</p>
                     </div>
                     <div className={styles.services__image}>
-                        <CardServices />
-                        <CardServices />
-                        <CardServices />
+                        <CardServices image={"Angkut"} title={"Pengangkutan Sampah"} />
+                        <CardServices image={"Masyarakat"} title={"Pengembangan Masyarakat"} />
+                        <CardServices image={"Iot"} title={"Pengembangan Teknologi"} />
                     </div>
                 </div>
             </section>
 
             {/* Break */}
-            <div className="break">
-            </div>
-            
+            <div className="break"></div>
+
             {/* Break */}
             <div className="break"></div>
+            {/* Order */}
             <section>
                 <h1 className="text-center m-5">Cara
                     <span className='secondary'> Pesan</span>

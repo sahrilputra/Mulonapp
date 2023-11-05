@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { RiArrowDropRightLine } from "react-icons/ri";
 import Image from 'next/image'
+import CardBenefit from './cards/CardBenefit';
 const MainHero = () => {
     return (
         <>
@@ -32,8 +33,9 @@ const MainHero = () => {
                         </div>
                         <div className={styles.card__imageSwipper}>
                             <div className={styles.card__items}>
-                                logo
-                                <p>param</p>
+                                <CardBenefit />
+                                <CardBenefit />
+                                <CardBenefit />
                             </div>
                         </div>
                     </div>
