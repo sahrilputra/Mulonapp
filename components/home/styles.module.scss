@@ -253,7 +253,8 @@
 //services
 
 .services {
-    height: 80vh;
+    min-height: 80vh;
+    max-height: max-content;
     width: 90%;
     margin: auto;
     background-image: url('/asset/vector/eclipsTop.svg');
@@ -263,11 +264,16 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 20px;
 
+    &__image{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
     @media screen and (max-width :780px) {
         width: 90%;
         margin: auto;

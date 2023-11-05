@@ -1,7 +1,11 @@
+'use client';
 import React from 'react';
 import styles from './styles.module.scss';
 import Link from 'next/link'
 import Image from 'next/image';
+import CardServices from './cards/CardServices';
+import TimeLines from './timeline/TimeLines';
+import Feedback from './Feedback';
 const AboutLayout = () => {
     return (
         <>
@@ -56,13 +60,44 @@ const AboutLayout = () => {
 
             <section>
                 <div className={styles.services}>
-                    <div className={styles.services__image}>
-                    </div>
                     <div className={styles.services__param}>
                         <h1>Layanan <span className="secondary">Kami</span></h1>
                         <p className="bodyText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat magnam expedita ipsam. Quam, nisi dignissimos.</p>
                     </div>
+                    <div className={styles.services__image}>
+                        <CardServices />
+                        <CardServices />
+                        <CardServices />
+                    </div>
                 </div>
+            </section>
+
+            <section>
+                <h1 className="text-center m-5">Cara
+                    <span className='secondary'> Pesan</span>
+                </h1>
+                <div className={styles.sectionContanier}>
+                    <div className={styles.sectionContanier__image}>
+                        <Image
+                            src={'/assets/vector/pesan.svg'}
+                            width={800}
+                            height={800}
+                            alt='talking with mulon'
+                        />
+                    </div>
+
+                    <div className={styles.sectionContanier__param}>
+
+                        <div className={styles.timelineContainer}>
+                            <TimeLines />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section>
+                <Feedback />
             </section>
         </>
     )
