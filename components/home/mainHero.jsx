@@ -32,7 +32,7 @@ const MainHero = () => {
                             <p className='bodyText text-white'>Berbagai Manfaat dan keunggulan kami dengan layanan penjemputan sampah yang handal, bersama kita jaga lingkungan kita agar tetap bersih dan sehat</p>
                         </div>
                         <div className={styles.card__imageSwipper}>
-                            <div className={styles.card__items}>
+                            <div className={styles.card__items} >
                                 <CardBenefit />
                                 <CardBenefit />
                                 <CardBenefit />
