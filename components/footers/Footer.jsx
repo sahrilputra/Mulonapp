@@ -54,7 +54,7 @@ const FootersIndex = () => {
                                 <h5 className={styles.whiteColor}>Social Media</h5>
                                 <div className={styles.items__social}>
                                     <Image
-                                        src={"/asset/icons/Instagram.svg"}
+                                        src={"/assets/icons/Instagram.svg"}
                                         width={30}
                                         height={30}
                                         alt='mulon logo'
@@ -62,7 +62,7 @@ const FootersIndex = () => {
                                     />
                                     <Image
                                         className={styles.iconsControl}
-                                        src={"/asset/icons/Facebook.svg"}
+                                        src={"/assets/icons/Facebook.svg"}
                                         width={30}
                                         height={30}
                                         alt='mulon logo'
