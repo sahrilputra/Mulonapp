@@ -1,11 +1,80 @@
-.nav{
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    
+// .nav {
+//     display: flex;
+//     width: 100%;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 80px;
+//     z-index: 99;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     // color: $white;
+//     min-height: max-content;
+//     height: max-content;
+//     padding: 20px;
 
-    &__container{
-        display: flex;
-    }
-}
+//     &__container {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-around;
+
+//         .containerListItems {
+//             display: flex;
+//             flex-direction: row;
+//             justify-content: space-between;
+//             gap: 50px;
+//             width: max-content;
+//         }
+//     }
+// }
+
+// .hamburgerPlace {
+//     position: absolute;
+//     display: none;
+//     right: 20px;
+//     padding: 10px;
+//     border: solid 1px #0000;
+
+//     :hover {
+//         cursor: pointer;
+//         color: white;
+//     }
+// }
+
+// .containerNavbar {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+
+//     .containerListItems {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: space-between;
+//         gap: 50px;
+//         width: max-content;
+//     }
+// }
+
+// @media (max-width: 768px) {
+
+//     .navigation {
+//         zoom: 85%;
+
+//     }
+
+//     .navListElement {
+//         display: none;
+//     }
+
+//     .containerNavbar {
+//         display: none;
+//     }
+
+//     .hamburgerPlace {
+//         display: block;
+//     }
+// }
+
+// .nav{
+// }
