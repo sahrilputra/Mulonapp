@@ -19,7 +19,7 @@ const AboutLayout = () => {
                             <p className='bodyText '>
                                 Mulon adalah Startup Teknologi yang bergerak pada layanan lingkungan dan sosial, kami hadir sebagai bentuk pendekatan baru bagi masyarakat kupang khususnya dalam mengatasi masalah sampah dengan pemanfaatan teknologi.
                             </p>
-                            <Link href='/home/about'>
+                            <Link href='/about'>
                                 <button className='primary_button'>Lihat Lebih Detail</button>
                             </Link>
                         </div>
