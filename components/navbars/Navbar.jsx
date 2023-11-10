@@ -53,8 +53,8 @@ export default function TestNavbars() {
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Static Actions">
                             <DropdownItem key="new" href="/angkut">Pengangkutan Sampah</DropdownItem>
-                            <DropdownItem key="copy">Layanan Masyarakat</DropdownItem>
-                            <DropdownItem key="edit">Pengembangan Teknologi</DropdownItem>
+                            <DropdownItem key="copy" href="/pemberdayaan">Layanan Masyarakat</DropdownItem>
+                            <DropdownItem key="edit" href="/teknologi">Pengembangan Teknologi</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </NavbarItem>

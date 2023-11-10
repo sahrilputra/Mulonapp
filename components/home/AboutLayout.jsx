@@ -70,9 +70,9 @@ const AboutLayout = () => {
                         <p className="bodyText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat magnam expedita ipsam. Quam, nisi dignissimos.</p>
                     </div>
                     <div className={styles.services__image}>
-                        <CardServices image={"Angkut"} title={"Pengangkutan Sampah"} />
-                        <CardServices image={"Masyarakat"} title={"Pengembangan Masyarakat"} />
-                        <CardServices image={"Iot"} title={"Pengembangan Teknologi"} />
+                        <CardServices image={"Angkut"} title={"Pengangkutan Sampah"} href={"angkut"} />
+                        <CardServices image={"Masyarakat"} title={"Pengembangan Masyarakat"} href={"pemberdayaan"}/>
+                        <CardServices image={"Iot"} title={"Pengembangan Teknologi"} href={"teknologi"}/>
                     </div>
                 </div>
             </section>

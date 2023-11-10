@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import Image from 'next/image';
 import Link from 'next/link';
 import { RiArrowDropRightLine } from "react-icons/ri";
-const CardServices = ({image, title}) => {
+const CardServices = ({image, title, href}) => {
     return (
         <>
 
@@ -20,7 +20,7 @@ const CardServices = ({image, title}) => {
                         <h4>
                             {title}
                         </h4>
-                        <Link href="#">
+                        <Link href={`/${href}`}>
                             <button className={styles.roundedBtn}><RiArrowDropRightLine size={25} /></button>
                         </Link>
                     </div>
