@@ -1,0 +1,50 @@
+.hero {
+    background-image: url('/assets/Background/TopBackground.png');
+    background-repeat: no-repeat;
+    background-position-y: -500px;
+    height: 60vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &__wrapper{
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        
+    }
+}
+
+.main{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+
+@media screen and (max-width: 700px) {
+    .hero {
+       height: 60vh;
+       align-items: center;
+       text-align: center;
+
+        &__wrapper{
+            padding: 12px;
+            grid-template-columns: 1fr;
+            text-align: center;
+            p{
+                font-size: 16px;
+            }
+        }
+    }
+}
