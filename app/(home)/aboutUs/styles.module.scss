@@ -1,0 +1,115 @@
+.flexCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vh50 {
+    height: 50vh;
+    width: 100%;
+}
+
+// .topBG {
+//     background-image: url('/assets/Background/TopBackground.png');
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position-y: -500px;
+//     position: relative;
+// }
+
+/* styles.module.scss */
+.topBG {
+    position: relative;
+    overflow: hidden;
+    /* Mengatasi masalah latar belakang yang terlalu lebar */
+}
+
+.topBG::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Pusatkan elemen */
+    width: 100vw;
+    /* Lebar layar penuh */
+    height: 100%;
+    background-image: url('/assets/Background/TopBackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -500px;
+    /* Sesuaikan dengan kebutuhan Anda */
+    z-index: -1;
+    /* Letakkan di belakang elemen utama */
+}
+
+.mission {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &__param {
+        width: 60%;
+        padding: 10px;
+    }
+
+    &__image {
+        // width: 40%;
+        padding: 10px;
+
+        .hutanImage {}
+    }
+
+}
+
+
+.socialContainer {
+    min-height: 80vh;
+    max-height: max-content;
+    background-image: url('/assets/Background/bottomBg.png');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    gap: 50px;
+    z-index: -1;
+
+}
+.socialImage {
+    position: absolute;
+    max-width: 90%;
+    bottom: -110px;
+    left: 50%;
+    z-index:0;
+    transform: translate(-50%, -50%);
+}
+
+
+
+@media screen and (max-width: 936px) {
+    .socialContainer {
+        h1 {
+            font-size: 36;
+        }
+    }
+
+
+    .mission {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        &__param {
+            width: 100%;
+            padding: 10px;
+        }
+    }
+}

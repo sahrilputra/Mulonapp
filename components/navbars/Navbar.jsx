@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import { Navbar, NavbarMenuToggle, NavbarBrand, NavbarMenuItem, NavbarContent, NavbarMenu, NavbarItem, Link, Button } from "@nextui-org/react";
+import { Navbar, NavbarMenuToggle, NavbarBrand, NavbarMenuItem, NavbarContent, NavbarMenu, NavbarItem, Link, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import styles from './styles.module.scss'
 import Image from "next/image";
 export default function TestNavbars() {
@@ -37,19 +37,30 @@ export default function TestNavbars() {
                 </div>
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem>
-                    <Link color="foreground" href="#">
+                <NavbarItem isActive>
+                    <Link href="/aboutUs" aria-current="page">
                         Tentang
                     </Link>
                 </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="#" aria-current="page">
-                        Team
-                    </Link>
+                <NavbarItem >
+                    <Dropdown>
+                        <DropdownTrigger>
+                            <Button
+                                variant="light"
+                            >
+                                Layanan
+                            </Button>
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Static Actions">
+                            <DropdownItem key="new" href="/angkut">Pengangkutan Sampah</DropdownItem>
+                            <DropdownItem key="copy">Layanan Masyarakat</DropdownItem>
+                            <DropdownItem key="edit">Pengembangan Teknologi</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Layanan
+                    <Link color="foreground" href="/blog">
+                        Blog
                     </Link>
                 </NavbarItem>
             </NavbarContent>

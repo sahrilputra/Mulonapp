@@ -159,11 +159,15 @@ h5 {
 
 @media screen and (max-width: 720px) {
   h1 {
-      font-size: 40px;
+    font-size: 36px;
   }
 
   p {
-      font-size: 18px;
+    font-size: 18px;
+  }
+
+  .bodyText {
+    font-size: 18px;
   }
 
 }

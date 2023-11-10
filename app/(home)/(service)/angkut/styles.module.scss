@@ -1,0 +1,206 @@
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+    max-height: max-content;
+    background-image: url('/assets/Background/TopBackground.png');
+    background-repeat: no-repeat;
+    background-position-y: -400px;
+    position: relative;
+
+
+    .wrapper {
+        width: 80%;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+
+        .tittle {
+            width: 700px;
+        }
+
+        .imageHolder {
+            width: 300px;
+        }
+    }
+
+}
+
+.main {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 30px;
+}
+
+.cards {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    background-color: $green-dark;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    padding: 34px 78px;
+    border-radius: 12px;
+
+    .iconHolder {
+        width: 100px;
+        height: 100px;
+    }
+
+    .param {
+        width: 500px;
+
+        .title {
+            width: 100%;
+        }
+
+    }
+}
+
+.wrapperAccordian {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    padding: 10px;
+    border-radius: 12px;
+    margin: auto;
+}
+
+
+.sectionContanier {
+    max-height: max-content;
+    min-height: 60vh;
+    width: 90%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    justify-content: center;
+    margin: auto;
+
+    &__image {
+        width: 90%;
+    }
+
+    &__param {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h1 {
+            font-size: 40px;
+        }
+    }
+
+    @media screen and (max-width : 780px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+        &__param {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h1 {
+                font-size: 26px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .socialContainer {
+        h1 {
+            font-size: 36;
+        }
+    }
+
+    .cards {
+        width: 90%;
+        zoom: 70%;
+        padding: 20px;
+
+        .param {
+            width: max-content;
+
+        }
+
+    }
+
+
+    .main {
+
+        h1 {
+            text-align: center;
+        }
+    }
+
+    .hero {
+
+        display: flex;
+
+
+        .wrapper {
+            flex-direction: column-reverse;
+
+            .tittle {
+                width: 100%;
+            }
+
+            .imageHolder {
+                margin-top: 40px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 528px) {
+
+    .wrapper {
+        width: 80%;
+        flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+
+        h1 {
+            font-size: 25px;
+        }
+    }
+
+    .cards {
+        width: 100%;
+        zoom: 60%;
+
+        .param {
+            width: 100%;
+
+        }
+
+    }
+}
