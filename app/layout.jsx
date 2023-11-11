@@ -1,8 +1,11 @@
 import './styles/globals.styles.scss'
 import FootersIndex from '../components/footers/Footer'
-import MainNavbars from '../components/navbars/MainNavbars'
-import {Providers} from "./providers";
 import TestNavbars from '../components/navbars/Navbar';
+import { Providers } from "./providers";
+
+import DashboardPage from '../ui/DashboardLayout';
+import LandingLayout from '../ui/LadingLayout';
+
 export const metadata = {
   title: 'Mulon',
   description: 'Kupang bersih bersama Mulon',
@@ -13,9 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className='light'>
       <body>
         <Providers>
-          <TestNavbars />
-            {children}
-          <FootersIndex />
+          {children}
         </Providers>
       </body>
     </html>

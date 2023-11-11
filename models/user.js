@@ -52,6 +52,11 @@ const userSchema = new mongoose.Schema({
             // Jenis kendaraan yang digunakan
         },
     },
+    team: {
+        type: String,
+        enum: [],
+        required: true,
+    },
 });
 
 const User = mongoose.model('User', userSchema);

@@ -1,11 +1,12 @@
 import React from 'react'
+import DashboardLayout from '../../ui/DashboardLayout'
 
-const dashboardLayout = ({ children }) => {
+export default function dashboard({ children }) {
     return (
         <>
-            {children}
+            <DashboardLayout>
+                {children}
+            </DashboardLayout>
         </>
     )
 }
-
-export default dashboardLayout
