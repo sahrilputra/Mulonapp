@@ -2,7 +2,7 @@ import React from 'react'
 import { User } from '@nextui-org/react'
 
 
-const mulonImage = "/mulon.png";
+const mulonImage = "../../public/Mulon.png";
 export const MulonProfiles = () => {
     return (
         <div className="mb-4 ">

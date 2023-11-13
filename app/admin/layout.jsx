@@ -9,7 +9,6 @@ export default function dashboard({ children }) {
                 <div className="mt-4 p-3">
                 {children}
                 </div>
-          
             </DashboardLayout>
         </>
     )
