@@ -6,6 +6,7 @@ import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { useSidebarContext } from '../../../ui/dashboard-contex';
 import { MulonProfiles } from './sidebar-profile';
+import { LayoutIcon, UsersIcon } from '../icons/Icons';
 import styles from './styles.module.scss';
 
 const SidebarWrapper = () => {
@@ -14,28 +15,27 @@ const SidebarWrapper = () => {
     return (
         <>
             {/* <div className={styles.sidebarComponetns}> </div>*/}
-            <aside className="h-screen z-[202] sticky top-0">
-
+            <aside className="h-screen z-[202] sticky top-0 flex justify-center border-r-3">
                 {collapsed ? (
                     <div className={Sidebar.Overlay()} onClick={setCollapsed} />
                 ) : null}
-                <div>
-                    <MulonProfiles
-                        className="flex items-center justify-center p-5"
-                    />
+                <div className="flex gap-3 flex-col  ">
+                    <div className="flex p-2 justify-center align-middle mt-2">
+                        <MulonProfiles />
+                    </div>
                     <SidebarMenu title="Main">
                         <SidebarItem
                             isActive={router.pathname === "/accounts"}
                             title="Home"
-                            icon={"icon"}
+                            icon={<LayoutIcon />}
                             href="#"
                         />
                     </SidebarMenu>
                     <SidebarMenu title="Page">
                         <SidebarItem
                             isActive={router.pathname === "/accounts"}
-                            title="Accounts"
-                            icon={"icon"}
+                            title="User"
+                            icon={<UsersIcon />}
                             href="#"
                         />
 
