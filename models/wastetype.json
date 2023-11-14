@@ -1,0 +1,28 @@
+{
+    "wasteTypes": [
+      {
+        "type": "Plastic",
+        "percentage": 50
+      },
+      {
+        "type": "Paper",
+        "percentage": 20
+      },
+      {
+        "type": "Metal",
+        "percentage": 30
+      },
+      {
+        "type": "Glass",
+        "percentage": 15
+      },
+      {
+        "type": "Organic",
+        "percentage": 10
+      },
+      {
+        "type": "Electronic",
+        "percentage": 5
+      }
+    ]
+  }

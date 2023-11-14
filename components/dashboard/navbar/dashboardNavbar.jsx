@@ -8,8 +8,8 @@ export default function NavbarWrapper({ children }) {
     return (
         <>
             <div className={styles.navbarWrapper}>
-                <Navbar isBordered className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-                    <NavbarContent as="div" className="items-center" justify="end">
+                <Navbar isBordered className="relative flex flex-col overflow-y-auto overflow-x-hidden">
+                    <NavbarContent as="div" className=" flex-row flex-wrap justify-end gap-3">
                         <NavbarContent justify="end">
                             <NavbarContent className="hidden sm:flex gap-3">
                                 <NavbarItem>

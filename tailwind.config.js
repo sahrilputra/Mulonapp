@@ -23,7 +23,9 @@ const config = {
     },
   },
   darkMode: "class",
-  plugins: [require('flowbite/plugin'), nextui()]
+  plugins: [nextui()]
 
 }
+
+//require('flowbite/plugin'),
 export default config

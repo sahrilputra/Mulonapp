@@ -1,9 +1,11 @@
+"use client"
 import React from 'react'
-import DashboardPage from '../../../ui/DashboardLayout'
-import CardStats from '../../../components/dashboard/cards/CardStats'
 import CardTeams from '../../../components/dashboard/cards/Card-Teams'
 import CardItems from '../../../components/dashboard/cards/Card-Items'
+import PieWasteType from '../../../components/chart/waste-type'
 import { UserTable } from '../../../components/dashboard/Table/UserTable'
+import { ExampleChart } from '../../../components/chart/bar-chart'
+import { StatsTimeSeries } from '../../../components/chart/stats-timeSeries'
 export default function dashboard() {
   return (
     <>
@@ -12,11 +14,11 @@ export default function dashboard() {
           <div className="mt-6  gap-6 flex flex-col w-full">
             {/* TOP SECTION */}
             <div className="flex flex-col gap-2">
-              <h3 className="text-xl font-semibold">Available Balance</h3>
-              <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-3 gap-5  justify-center w-full">
-                <CardStats />
-                <CardStats />
-                <CardStats />
+              <h3 className="text-xl font-semibold">Stast Layanan</h3>
+              <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-2 gap-5  justify-center w-full">
+                {/* <CardStats /> */}
+                <PieWasteType />
+                <ExampleChart />
               </div>
             </div>
 
@@ -24,7 +26,7 @@ export default function dashboard() {
             <div className="h-full flex flex-col gap-2">
               <h3 className="text-xl font-semibold">Statistics</h3>
               <div className="w-full bg-default-50 shadow-lg rounded-2xl p-6 ">
-                CHART GOES HERE
+                <StatsTimeSeries/>
               </div>
             </div>
           </div>
@@ -52,5 +54,5 @@ export default function dashboard() {
 }
 
 
-dashboard.getLayout = (page) => <DashboardPage>{page}</DashboardPage>
+// dashboard.getLayout = (page) => <DashboardPage>{page}</DashboardPage>
 

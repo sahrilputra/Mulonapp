@@ -1,11 +1,11 @@
 'use client';
 import React from 'react'
-import { Avatar, Blockquote } from 'flowbite-react';
+// import { Avatar, Blockquote } from 'flowbite-react';
 import styles from './styles.module.scss';
 const CardQuote = () => {
     return (
         <>
-            <div className={styles.qoutes}>
+            {/* <div className={styles.qoutes}>
                 <figure className="mx-auto max-w-screen-md text-center">
                     <svg
                         className="mx-auto mb-3 h-10 w-10 text-gray-400 dark:text-gray-600"
@@ -31,7 +31,7 @@ const CardQuote = () => {
                     </figcaption>
                 </figure>
 
-            </div>
+            </div> */}
         </>
     );
 }

@@ -28,7 +28,7 @@ const SidebarWrapper = () => {
                             isActive={router.pathname === "/accounts"}
                             title="Home"
                             icon={<LayoutIcon />}
-                            href="#"
+                            href="/admin/dashboard"
                         />
                     </SidebarMenu>
                     <SidebarMenu title="Page">
@@ -36,7 +36,7 @@ const SidebarWrapper = () => {
                             isActive={router.pathname === "/accounts"}
                             title="User"
                             icon={<UsersIcon />}
-                            href="#"
+                            href="/admin/user"
                         />
 
                         <SidebarItem
