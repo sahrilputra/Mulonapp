@@ -1,30 +1,25 @@
 
-import React, { createContext, useContext } from 'react';
-
-
-
+import React, { createContext, useContext, useState } from 'react';
 
 export const sidebarContextnew = createContext({
     collapsed: false,
-    setIsCollapsed: () => { },
-})
+    setCollapsed: () => { },
+});
+
 export const useSidebarContext = () => {
     return useContext(sidebarContextnew);
 }
 
+export const SidebarContextProvider = ({ children }) => {
+    const [collapsed, setCollapsed] = useState(false);
 
+    const setIsCollapsed = (value) => {
+        setCollapsed(value);
+    };
 
-// export const CollapseContext = createContext();
-
-// export const CollapseProvider = ({ children }) => {
-//     const [isCollapsed, setIsCollapsed] = useState(false);
-//     const toggleCollapse = () => {
-//         setIsCollapsed(!isCollapsed);
-//     };
-
-//     return (
-//         <CollapseContext.Provider value={{ isCollapsed, toggleCollapse }}>
-//             {children}
-//         </CollapseContext.Provider>
-//     );
-// };
+    return (
+        <sidebarContextnew.Provider value={{ collapsed, setCollapsed: setIsCollapsed }}>
+            {children}
+        </sidebarContextnew.Provider>
+    );
+};

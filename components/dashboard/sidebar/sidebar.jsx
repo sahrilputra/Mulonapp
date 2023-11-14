@@ -12,14 +12,14 @@ import styles from './styles.module.scss';
 const SidebarWrapper = () => {
     const router = useRouter();
     const { collapsed, setCollapsed } = useSidebarContext();
+
     return (
         <>
+
             {/* <div className={styles.sidebarComponetns}> </div>*/}
-            <aside className="h-screen z-[202] sticky top-0 flex justify-center border-r-3">
-                {collapsed ? (
-                    <div className={Sidebar.Overlay()} onClick={setCollapsed} />
-                ) : null}
-                <div className="flex gap-3 flex-col  ">
+            <aside className={`h-screen z-[202] sticky top-0 flex justify-center border-r-3  ${collapsed ? styles.hide : styles.active}`}>
+                <div onClick={() => setCollapsed(false)} />
+                <div className={`${styles.open} flex gap-3 flex-col`}>
                     <div className="flex p-2 justify-center align-middle mt-2">
                         <MulonProfiles />
                     </div>
@@ -38,7 +38,6 @@ const SidebarWrapper = () => {
                             icon={<UsersIcon />}
                             href="/admin/user"
                         />
-
                         <SidebarItem
                             isActive={router.pathname === "/payments"}
                             title="Payments"

@@ -5,8 +5,20 @@
 .sidebar {
     flex: 1;
     margin-right: 5px;
+    display: block;
 }
 
 .main {
     flex: 5;
+}
+
+.open {
+    padding: 10px;
+    flex: 1;
+    margin-right: 5px;
+    display: block;
+}
+
+.hidden {
+    display: none;
 }

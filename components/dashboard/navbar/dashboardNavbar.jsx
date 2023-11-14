@@ -1,14 +1,21 @@
 "use client"
-import React from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
 import { SearchIcon } from "./SearchIcon.jsx";
 import styles from './styles.module.scss'
+import { useSidebarContext } from "../../../ui/dashboard-contex";
 
 export default function NavbarWrapper({ children }) {
+    const { collapsed, setCollapsed } = useSidebarContext();
     return (
         <>
             <div className={styles.navbarWrapper}>
                 <Navbar isBordered className="relative flex flex-col overflow-y-auto overflow-x-hidden">
+                    <NavbarContent>
+                        <button className="clicked" onClick={() => setCollapsed(!collapsed)}>
+                            click me
+                        </button>
+                    </NavbarContent>
                     <NavbarContent as="div" className=" flex-row flex-wrap justify-end gap-3">
                         <NavbarContent justify="end">
                             <NavbarContent className="hidden sm:flex gap-3">
