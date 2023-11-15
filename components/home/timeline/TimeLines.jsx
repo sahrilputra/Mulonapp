@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button, Timeline } from 'flowbite-react';
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
+import Link from 'next/link';
 function TimeLines() {
   return (
     <Timeline>
@@ -13,10 +14,12 @@ function TimeLines() {
           <Timeline.Body>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi possimus labore provident optio molestias excepturi porro assumenda error facilis accusamus!.
           </Timeline.Body>
-          <Button color="gray">
-            Hubungi Kami
-            <HiArrowNarrowRight className="ml-2 h-3 w-3" />
-          </Button>
+          <Link href="https://wa.link/tdbsvz">
+            <Button color="gray">
+              Hubungi Kami
+              <HiArrowNarrowRight className="ml-2 h-3 w-3" />
+            </Button>
+          </Link>
         </Timeline.Content>
       </Timeline.Item>
       <Timeline.Item>

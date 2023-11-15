@@ -13,7 +13,9 @@ const BlogSection = () => {
                     <BlogCardList />
                     <BlogCardList />
                 </div>
-                <button className='primary_button'>Semua Blog Kami</button>
+                <Link href="https://wa.link/tdbsvz">
+                    <button className='primary_button'>Semua Blog Kami</button>
+                </Link>
             </div>
         </>
     )

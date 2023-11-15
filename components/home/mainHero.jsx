@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import { RiArrowDropRightLine } from "react-icons/ri";
 import Image from 'next/image'
 import CardBenefit from './cards/CardBenefit';
+import Link from 'next/link';
 const MainHero = () => {
     return (
         <>
@@ -11,7 +12,9 @@ const MainHero = () => {
                     <div className={styles.content}>
                         <h1>Smart Waste Management Untuk Kota Lebih <span className='secondary'>Bersih</span></h1>
                         <p className='bodyText'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit nihil eum suscipit modi, quaerat provident. Quis dignissimos ratione amet voluptas!</p>
-                        <button className='primary_button'>Hubungi Kami Sekarang <RiArrowDropRightLine size={20} fill='#ffff'/> </button>
+                        <Link href="https://wa.link/tdbsvz">
+                            <button className='primary_button'>Hubungi Kami Sekarang <RiArrowDropRightLine size={20} fill='#ffff' /> </button>
+                        </Link>
                     </div>
                     <div className={styles.imageContent}>
                         <Image

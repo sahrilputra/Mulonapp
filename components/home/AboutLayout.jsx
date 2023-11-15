@@ -8,6 +8,7 @@ import TimeLines from './timeline/TimeLines';
 import Feedback from './Feedback';
 import BlogSection from './blogComponents/BlogSection';
 import MediaContainer from './MediaContainer/MediaContainer';
+
 const AboutLayout = () => {
     return (
         <>
@@ -129,7 +130,9 @@ const AboutLayout = () => {
                     <p className='bodyText'>
                         Hubungi Kami sekarang dan dapatkan banyak potongan harga pengangkutan sampah sampai dengan 50% khusus daerah Kupang
                     </p>
+                    <Link href="https://wa.link/tdbsvz">
                     <button className='primary_button'>Hubungi Kami Sekarang</button>
+                    </Link>
                 </div>
             </div>
 

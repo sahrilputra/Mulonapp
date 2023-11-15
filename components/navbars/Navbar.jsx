@@ -8,15 +8,19 @@ export default function TestNavbars() {
     const menuItems = [
         "Profile",
         "Dashboard",
-        "Activity",
-        "Analytics",
-        "System",
-        "Deployments",
-        "My Settings",
-        "Team Settings",
-        "Help & Feedback",
-        "Log Out",
+        "Tentang",
+        "Layanan",
+        "Blog",
+        "Login",
     ];
+
+    const LinkItems = [
+        "/",
+        "/admin/dashboard",
+        "/angkut",
+        "/aboutUs",
+
+    ]
 
     return (
         <Navbar shouldHideOnScroll={!isMenuOpen}
@@ -79,21 +83,54 @@ export default function TestNavbars() {
                 className="sm:hidden"
             />
             <NavbarMenu>
-                {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`}>
-                        <Link
-                            color={
-                                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                            }
-                            className="w-full"
-                            href="#"
-                            size="lg"
-                        >
-                            {item}
-                        </Link>
-                    </NavbarMenuItem>
-                ))}
+
+                <NavbarMenuItem >
+                    <Link
+                        className="w-full"
+                        href="#"
+                        size="md"
+                    >
+                        Profile
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem >
+                    <Link
+                        className="w-full"
+                        href="/admin/dashboard"
+                        size="md"
+                    >
+                        Dashboard
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem >
+                    <Link
+                        className="w-full"
+                        href="/aboutUs"
+                        size="md"
+                    >
+                        Tentang Mulon
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem >
+                    <Link
+                        className="w-full"
+                        href="/angkut"
+                        size="md"
+                    >
+                        Layanan
+                    </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem  >
+                    <Link
+                        className="w-full"
+                        href="/blog"
+                        size="md"
+                    >
+                        Blog
+                    </Link>
+                </NavbarMenuItem>
+
             </NavbarMenu>
-        </Navbar>
+        </Navbar >
     );
 }
