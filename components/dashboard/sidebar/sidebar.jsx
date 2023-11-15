@@ -17,10 +17,10 @@ const SidebarWrapper = () => {
         <>
 
             {/* <div className={styles.sidebarComponetns}> </div>*/}
-            <aside className={`h-screen z-[202] sticky top-0 flex justify-center border-r-3  ${collapsed ? styles.hide : styles.active}`}>
+            <aside className={`h-screen z-[202] sticky top-0 flex justify-center border-r-3 ${styles.sidebars}`}>
                 <div onClick={() => setCollapsed(false)} />
-                <div className={`${styles.open} flex gap-3 flex-col`}>
-                    <div className="flex p-2 justify-center align-middle mt-2">
+                <div className={`flex gap-3 flex-col ${styles.wrapper}`}>
+                    <div className="flex p-2 justify-center align-middle mt-2 ">
                         <MulonProfiles />
                     </div>
                     <SidebarMenu title="Main">

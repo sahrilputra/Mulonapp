@@ -2,18 +2,24 @@
     display: flex;
 }
 
-.sidebar {
-    flex: 1;
-    margin-right: 5px;
-    display: block;
+
+.none {
+    display: none;
 }
+
 
 .main {
     flex: 5;
 }
 
+// SIDEBAR CONTROL
+
+.sidebar {
+    flex: 1;
+    display: block;
+}
+
 .open {
-    padding: 10px;
     flex: 1;
     margin-right: 5px;
     display: block;
@@ -21,4 +27,24 @@
 
 .hidden {
     display: none;
+}
+
+.absolute {
+    position: fixed;
+    flex: 0;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 260px;
+    background-color: white;
+}
+
+@media screen and (max-width : 900px) {
+    .main {
+        width: 100%;
+    }
+
+    .container {
+        display: block;
+    }
 }

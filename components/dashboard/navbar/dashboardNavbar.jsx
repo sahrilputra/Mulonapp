@@ -1,23 +1,66 @@
 "use client"
 import React, { useContext, useState, useCallback, useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar } from "@nextui-org/react";
-import { SearchIcon } from "./SearchIcon.jsx";
+import {
+    Navbar,
+    NavbarBrand,
+    Chip,
+    Button,
+    NavbarContent,
+    NavbarMenuToggle,
+    NavbarItem,
+    Link,
+    Input,
+    DropdownItem,
+    DropdownTrigger,
+    Dropdown,
+    DropdownMenu,
+    Avatar,
+} from "@nextui-org/react";
+import { LayoutIcon } from "../icons/Icons";
 import styles from './styles.module.scss'
 import { useSidebarContext } from "../../../ui/dashboard-contex";
-
+import { useMediaQuery } from "react-responsive";
+import { VersionLebel } from "../../navbars/lebels/VersionLebel";
 export default function NavbarWrapper({ children }) {
     const { collapsed, setCollapsed } = useSidebarContext();
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    const isDesktopLarge = useMediaQuery({
+        query: '(min-width : 1024px)'
+    });
+    const isTabletMed = useMediaQuery({
+        query: '(min-width: 900px)'
+    });
+
+    const isMobiledView = useMediaQuery({
+        query: '(min-width: 600px)'
+    });
+
+    const isSmallerMobile = useMediaQuery({
+        query: '(min-width: 300px)'
+    })
+
     return (
         <>
             <div className={styles.navbarWrapper}>
-                <Navbar isBordered className="relative flex flex-col overflow-y-auto overflow-x-hidden">
-                    <NavbarContent>
-                        <button className="clicked" onClick={() => setCollapsed(!collapsed)}>
-                            click me
-                        </button>
-                    </NavbarContent>
-                    <NavbarContent as="div" className=" flex-row flex-wrap justify-end gap-3">
-                        <NavbarContent justify="end">
+                <Navbar isBordered className="flex flex-row justify-normal">
+                    {isTabletMed ? (
+                        <></>
+                    ) : (
+                        <Button
+                            variant="ghost"
+                            isIconOnly
+                            onMenuOpenChange={() => setIsMenuOpen}
+                            className="clicked"
+                            onClick={() => setCollapsed(!collapsed)}
+                        >
+                            <LayoutIcon />
+                        </Button>
+                    )}
+
+                    <NavbarContent as="div" className="flex flex-row justify-end align-middle">
+
+                        <NavbarContent justify="end" className=' flex gap-3'>
                             <NavbarContent className="hidden sm:flex gap-3">
                                 <NavbarItem>
                                     <Link color="foreground" href="#">
@@ -30,9 +73,7 @@ export default function NavbarWrapper({ children }) {
                                     </Link>
                                 </NavbarItem>
                                 <NavbarItem>
-                                    <Link color="foreground" href="#">
-                                        Integrations
-                                    </Link>
+                                    <VersionLebel />
                                 </NavbarItem>
                             </NavbarContent>
                         </NavbarContent>

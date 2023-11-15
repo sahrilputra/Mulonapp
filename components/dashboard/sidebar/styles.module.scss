@@ -11,3 +11,24 @@
 .active {
     display: block;
 }
+
+.sidebars {
+    width: 90%;
+}
+
+.wrapper {
+    width: 90%;
+    padding: 5px;
+}
+
+@media screen and (max-width: 1220px) {
+    .sidebars {
+        width: 260px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .sidebars {
+        width: 100%;
+    }
+}
