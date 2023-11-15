@@ -14,8 +14,8 @@ export const MulonProfiles = () => {
                     <User
                         as="button"
                         avatarProps={{
-                            isBordered: true,
-                            src: { mulonImage },
+                            isBordered: false,
+                            src: "/Mulon.png",
                         }}
                         className="transition-transform"
                         description="Waste Management"

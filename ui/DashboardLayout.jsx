@@ -28,6 +28,10 @@ export default function DashboardLayout({ children }) {
     const handleToggleSidebar = () => {
         console.log("Toggling Sidebar");
         setSidebarOpen(!sidebarOpen);
+
+        if (isTabletMed) {
+            setSidebarOpen(false);
+        }
     };
 
     const handleChildrenClick = () => {
@@ -35,9 +39,8 @@ export default function DashboardLayout({ children }) {
         if (!isTabletMed && !sidebarOpen) {
             console.log("Closing Sidebar")
             setSidebarOpen(true);
-        } else if (isTabletMed) {
-            setSidebarOpen(false);
         }
+
     };
 
     return (

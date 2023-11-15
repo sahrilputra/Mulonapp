@@ -56,20 +56,33 @@ export default function NavbarWrapper({ children }) {
                         >
                             <LayoutIcon />
                         </Button>
+                        
                     )}
-
+                    {/* {isTabletMed ? (
+                        <></>
+                    ) : (
+                        <Button
+                            variant="ghost"
+                            isIconOnly
+                            onMenuOpenChange={() => setIsMenuOpen}
+                            className="clicked"
+                            onClick={() => setCollapsed(!collapsed)}
+                        >
+                            <LayoutIcon />
+                        </Button>
+                    )} */}
                     <NavbarContent as="div" className="flex flex-row justify-end align-middle">
 
                         <NavbarContent justify="end" className=' flex gap-3'>
                             <NavbarContent className="hidden sm:flex gap-3">
                                 <NavbarItem>
                                     <Link color="foreground" href="#">
-                                        Features
+                                        Docs
                                     </Link>
                                 </NavbarItem>
                                 <NavbarItem isActive>
                                     <Link href="#" aria-current="page" color="secondary">
-                                        Customers
+                                        Blog
                                     </Link>
                                 </NavbarItem>
                                 <NavbarItem>

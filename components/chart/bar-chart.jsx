@@ -37,11 +37,11 @@ export function ExampleChart() {
 
   return (
     <>
-      <Card className="py-2" >
+      <Card className="py-2 flex justify-center align-middle">
         <CardHeader>
           <span className="text-sm">Total Pengguna</span>
         </CardHeader>
-        <CardBody>
+        <CardBody className="flex justify-center align-middle">
           <Chart
             type="area"
             options={option}

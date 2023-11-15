@@ -43,7 +43,7 @@ const PieWasteType = () => {
     };
     return (
         <>
-            <Card>
+            <Card className="flex justify-center align-middle">
                 <CardHeader>
                     <p>Sampah Yang dipilah</p>
                 </CardHeader>
