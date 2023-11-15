@@ -47,8 +47,8 @@ const PieWasteType = () => {
                 <CardHeader>
                     <p>Sampah Yang dipilah</p>
                 </CardHeader>
-                <CardBody>
-                    <div id="chart">
+                <CardBody className="flex justify-center">
+                    <div className="flex justify-center">
                         <Chart
                             options={options}
                             series={chartData.series}

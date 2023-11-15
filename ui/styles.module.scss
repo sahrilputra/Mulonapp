@@ -30,13 +30,18 @@
 }
 
 .absolute {
-    position: fixed;
     flex: 0;
     left: 0;
     top: 0;
-    z-index: 99;
-    width: 260px;
     background-color: white;
+    transition: transform 0.6s ease 1s;
+    height: 100%;
+    position: fixed;
+    // transform: translateX(-100%);
+    width: 16rem;
+    flex-shrink: 0;
+    z-index: 99;
+    overflow-y: auto;
 }
 
 @media screen and (max-width : 900px) {

@@ -1,17 +1,18 @@
 import React, { useContext } from 'react'
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Avatar, Tooltip } from "@nextui-org/react";
 import { CollapseItem } from './collapse-item';
 import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { useSidebarContext } from '../../../ui/dashboard-contex';
 import { MulonProfiles } from './sidebar-profile';
-import { LayoutIcon, UsersIcon } from '../icons/Icons';
+import { LayoutIcon, HomeIcon, UsersIcon, SettingsIcon, DevIcon, ChangeLogIcon, CustomersIcon, AccountsIcon, ReportsIcon } from '../icons/Icons';
 import styles from './styles.module.scss';
 
 const SidebarWrapper = () => {
-    const router = useRouter();
+    const router = usePathname();
     const { collapsed, setCollapsed } = useSidebarContext();
+    console.log(router);
 
     return (
         <>
@@ -25,25 +26,57 @@ const SidebarWrapper = () => {
                     </div>
                     <SidebarMenu title="Main">
                         <SidebarItem
-                            isActive={router.pathname === "/accounts"}
+                            isActive={router === "/admin/dashboard"}
                             title="Home"
-                            icon={<LayoutIcon />}
+                            icon={<HomeIcon />}
                             href="/admin/dashboard"
                         />
                     </SidebarMenu>
                     <SidebarMenu title="Page">
+
                         <SidebarItem
-                            isActive={router.pathname === "/accounts"}
+                            isActive={router === "/admin/user"}
                             title="User"
-                            icon={<UsersIcon />}
+                            icon={<CustomersIcon />}
                             href="/admin/user"
                         />
+
                         <SidebarItem
-                            isActive={router.pathname === "/payments"}
-                            title="Payments"
-                            icon={"icon"}
+                            isActive={router === "/payments"}
+                            title="Customer"
+                            icon={<CustomersIcon />}
                             href="#"
                         />
+                        <SidebarItem
+                            isActive={router === "/reports"}
+                            title="Reports"
+                            icon={<ReportsIcon />}
+                            href="#"
+                        />
+                    </SidebarMenu>
+                    <SidebarMenu title="General">
+                        <SidebarItem
+                            isActive={router === "/settings"}
+                            title="Settings"
+                            icon={<SettingsIcon />}
+                            href="#"
+                        />
+
+                        <SidebarItem
+                            isActive={router === "/developer"}
+                            title="Developer"
+                            icon={<DevIcon />}
+                            href="#"
+                        />
+
+                        <SidebarItem
+                            isActive={router === "/changeLog"}
+                            title="Update Logs"
+                            icon={<ChangeLogIcon />}
+                            href="#"
+                        />
+
+
                     </SidebarMenu>
                 </div>
             </aside>
