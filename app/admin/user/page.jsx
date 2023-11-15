@@ -3,7 +3,7 @@ import React from 'react'
 import { UserTable } from '../../../components/dashboard/Table/UserTable'
 import { Input, useDisclosure, ModalContent, Modal, ModalHeader, Link, ModalBody, ModalFooter, Button, } from "@nextui-org/react";
 import { SearchIcon } from '../../../components/dashboard/navbar/SearchIcon'
-import { MailIcon, LockIcon } from '../../../components/dashboard/icons/Icons';
+import { MailIcon, LockIcon, FilterIcon } from '../../../components/dashboard/icons/Icons';
 const user = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
@@ -14,7 +14,8 @@ const user = () => {
                     <div className="mt-6  gap-6 flex flex-col w-full">
                         <div className="flex  flex-wrap justify-between">
                             <h3 className="text-center text-xl font-semibold">Pengguna Terbaru</h3>
-                            <div className="justify-end flex flex-nowrap flex-row gap-3">
+                            <div className="justify-end flex flex-wrap flex-row gap-3">
+
                                 <Input
                                     classNames={{
                                         base: "max-w-full sm:max-w-[10rem] h-10",
@@ -28,7 +29,13 @@ const user = () => {
                                     type="search"
 
                                 />
-                                <Button onPress={onOpen} color="primary">Tambah Pengguna</Button>
+                                <Button
+                                    isIconOnly
+                                    size="sm"
+                                >
+                                    <FilterIcon />
+                                </Button>
+                                <Button size='sm' onPress={onOpen} color="primary">Tambah Pengguna</Button>
                             </div>
                         </div>
                         <UserTable />
@@ -40,7 +47,7 @@ const user = () => {
             <Modal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
-                placement="top-center"
+                placement="bottom-center"
                 backdrop='blur'
             >
                 <ModalContent>

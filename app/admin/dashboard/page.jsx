@@ -6,10 +6,9 @@ import PieWasteType from '../../../components/chart/waste-type'
 import { UserTable } from '../../../components/dashboard/Table/UserTable'
 import { ExampleChart } from '../../../components/chart/bar-chart'
 import { StatsTimeSeries } from '../../../components/chart/stats-timeSeries'
-import { useSidebarContext } from '../../../ui/dashboard-contex'
+import { Steam } from '../../../components/chart/Steam'
 export default function dashboard() {
 
-  const { collapsed, setCollapsed } = useSidebarContext();
   return (
     <>
       <div className=" h-full">
@@ -30,6 +29,7 @@ export default function dashboard() {
               <h3 className="text-xl font-semibold">Statistics</h3>
               <div className="w-full bg-default-50 shadow-lg rounded-2xl p-6 ">
                 <StatsTimeSeries />
+                {/* <Steam /> */}
               </div>
             </div>
           </div>

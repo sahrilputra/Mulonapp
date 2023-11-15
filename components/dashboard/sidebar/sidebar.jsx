@@ -6,7 +6,7 @@ import { SidebarItem } from "./sidebar-item";
 import { SidebarMenu } from "./sidebar-menu";
 import { useSidebarContext } from '../../../ui/dashboard-contex';
 import { MulonProfiles } from './sidebar-profile';
-import { LayoutIcon, HomeIcon, UsersIcon, SettingsIcon, DevIcon, ChangeLogIcon, CustomersIcon, AccountsIcon, ReportsIcon } from '../icons/Icons';
+import { LayoutIcon, HomeIcon, UsersIcon, SettingsIcon, DevIcon, ChangeLogIcon, CustomersIcon, AccountsIcon, ReportsIcon, FilterIcon } from '../icons/Icons';
 import styles from './styles.module.scss';
 
 const SidebarWrapper = () => {
@@ -21,7 +21,7 @@ const SidebarWrapper = () => {
             <aside className={`h-screen z-[202] sticky top-0 flex justify-center border-r-3 ${styles.sidebars}`}>
                 <div onClick={() => setCollapsed(false)} />
                 <div className={`flex gap-3 flex-col ${styles.wrapper}`}>
-                    <div className="flex p-2 justify-center align-middle mt-2 ">
+                    <div className="flex p-2 justify-start align-middle mt-2 ">
                         <MulonProfiles />
                     </div>
                     <SidebarMenu title="Main">
@@ -48,11 +48,18 @@ const SidebarWrapper = () => {
                             href="#"
                         />
                         <SidebarItem
+                            isActive={router === "/admin/sorted"}
+                            title="Sorting"
+                            icon={<FilterIcon />}
+                            href="/admin/sorted"
+                        />
+                        <SidebarItem
                             isActive={router === "/reports"}
                             title="Reports"
                             icon={<ReportsIcon />}
                             href="#"
                         />
+
                     </SidebarMenu>
                     <SidebarMenu title="General">
                         <SidebarItem

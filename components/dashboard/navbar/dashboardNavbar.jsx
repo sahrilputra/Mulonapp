@@ -43,7 +43,7 @@ export default function NavbarWrapper({ children }) {
     return (
         <>
             <div className={styles.navbarWrapper}>
-                <Navbar isBordered className="flex flex-row justify-normal">
+                <Navbar isBordered className="">
                     {isTabletMed ? (
                         <></>
                     ) : (
@@ -71,8 +71,7 @@ export default function NavbarWrapper({ children }) {
                             <LayoutIcon />
                         </Button>
                     )} */}
-                    <NavbarContent as="div" className="flex flex-row justify-end align-middle">
-
+                    <NavbarContent as="div" className="">
                         <NavbarContent justify="end" className=' flex gap-3'>
                             <NavbarContent className="hidden sm:flex gap-3">
                                 <NavbarItem>
