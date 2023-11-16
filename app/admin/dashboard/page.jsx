@@ -17,9 +17,10 @@ export default function dashboard() {
             {/* TOP SECTION */}
             <div className="flex flex-col gap-2 text-center md:text-left sm:text-center">
               <h3 className="text-xl font-semibold">Stast Layanan</h3>
-              <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-2 gap-5 justify-center w-full">
+              <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-3 gap-5 justify-center w-full">
                 {/* <CardStats /> */}
                 <PieWasteType className="flex justify-center" />
+                <ExampleChart />
                 <ExampleChart />
               </div>
             </div>

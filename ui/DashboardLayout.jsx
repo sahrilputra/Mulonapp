@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { sidebarContextnew } from './dashboard-contex';
 import SidebarWrapper from '../components/dashboard/sidebar/sidebar';
 import NavbarWrapper from '../components/dashboard/navbar/dashboardNavbar';
@@ -16,31 +16,26 @@ export default function DashboardLayout({ children }) {
     const isTabletMed = useMediaQuery({
         query: '(min-width: 900px)'
     });
-
-    const isMobiledView = useMediaQuery({
-        query: '(min-width: 600px)'
-    });
-
-    const isSmallerMobile = useMediaQuery({
-        query: '(min-width: 300px)'
-    })
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        if (isDesktopLarge) {
+            setSidebarOpen(false);
+        } else if (isTabletMed) {
+            setSidebarOpen(true);
+        }
+    }, [isDesktopLarge, isTabletMed]);
+
     const handleToggleSidebar = () => {
         console.log("Toggling Sidebar");
         setSidebarOpen(!sidebarOpen);
-
-        if (isTabletMed) {
-            setSidebarOpen(false);
-        }
     };
 
     const handleChildrenClick = () => {
         console.log("children clicked")
         if (!isTabletMed && !sidebarOpen) {
-            console.log("Closing Sidebar")
             setSidebarOpen(true);
         }
-
     };
 
     return (

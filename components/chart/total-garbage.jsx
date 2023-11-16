@@ -25,6 +25,9 @@ export function TotalGarbageData() {
                     show: false,
                 },
             },
+            dataLabels: {
+                enabled: false
+            },
             stroke: {
                 curve: 'smooth',
             },
