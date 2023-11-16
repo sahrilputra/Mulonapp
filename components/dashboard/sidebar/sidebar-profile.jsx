@@ -15,12 +15,15 @@ export const MulonProfiles = () => {
                         as="button"
                         avatarProps={{
                             isBordered: false,
+                            radius: "sm",
                             src: "/Mulon.png",
+                            name: "mulon image"    
                         }}
+                        
                         className="transition-transform"
                         description="Waste Management"
-                        name="Mulon"
-                    />
+                    >
+                    </User>
                 </DropdownTrigger>
                 <DropdownMenu aria-label="User Actions" variant="shadow">
                     <DropdownItem key="profile" className="h-14 gap-2">

@@ -2,40 +2,50 @@
 import React from 'react'
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue } from "@nextui-org/react";
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
-import { columns, users } from '../../../models/data';
+
+import { columns, sampleCustomer } from '../../../models/customer';
+
 
 const statusColorMap = {
     active: "success",
     paused: "danger",
     vacation: "warning",
 };
-export const UserTable = () => {
+
+export const CustomerTable = () => {
     const renderCell = React.useCallback((user, columnKey) => {
         const cellValue = user[columnKey];
 
         switch (columnKey) {
-            case "name":
+            case "username":
                 return (
                     <User
-                        avatarProps={{ radius: "lg", src: user.avatar }}
-                        description={user.email}
+                        avatarProps={{ radius: "none", src: user.avatar }}
+                        description={user.username}
                         name={cellValue}
                     >
                         {user.email}
                     </User>
                 );
-            case "team":
+            case "email":
+                return (
+                    <div className="flex flex-col">
+                        <p className="text-bold text-sm capitalize text-default-400">{user.email}</p>
+                    </div>
+                );
+            case "phoneNumber":
                 return (
                     <div className="flex flex-col">
                         <p className="text-bold text-sm capitalize">{cellValue}</p>
-                        <p className="text-bold text-sm capitalize text-default-400">{user.team}</p>
+                        <p className="text-bold text-sm capitalize text-default-400">{user.phoneNumber}</p>
                     </div>
                 );
-            case "status":
+            case "address":
                 return (
-                    <Chip className="capitalize" color={statusColorMap[user.status]} size="sm" variant="flat">
-                        {cellValue}
-                    </Chip>
+                    <div className="flex flex-col">
+                        <p className="text-bold text-sm capitalize">{cellValue}</p>
+                        <p className="text-bold text-sm capitalize text-default-400">{user.address}</p>
+                    </div>
                 );
             case "actions":
                 return (
@@ -71,9 +81,9 @@ export const UserTable = () => {
                     </TableColumn>
                 )}
             </TableHeader>
-            <TableBody items={users}>
+            <TableBody items={sampleCustomer}>
                 {(item) => (
-                    <TableRow key={item.id}>
+                    <TableRow key={item.phoneNumber}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                     </TableRow>
                 )}

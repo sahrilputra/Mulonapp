@@ -3,6 +3,7 @@ import React from "react";
 
 import PieWasteType from "../../../components/chart/waste-type";
 import { ExampleChart } from '../../../components/chart/bar-chart'
+import { TotalGarbageData } from "../../../components/chart/total-garbage";
 
 const sordetPlace = () => {
     return (
@@ -14,7 +15,7 @@ const sordetPlace = () => {
                         <h3 className="text-xl font-semibold">Stast Layanan</h3>
                         <div className="grid md:grid-cols-2 grid-cols-1 2xl:grid-cols-2 gap-5 justify-center w-full">
                             {/* <CardStats /> */}
-                            <PieWasteType className="flex justify-center" />
+                            <TotalGarbageData className="flex justify-center" />
                             <ExampleChart />
                         </div>
                     </div>

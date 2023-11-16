@@ -30,7 +30,7 @@ export default function NavbarWrapper({ children }) {
     });
     const isTabletMed = useMediaQuery({
         query: '(min-width: 900px)'
-    });
+    }); 
 
     const isMobiledView = useMediaQuery({
         query: '(min-width: 600px)'

@@ -2,7 +2,7 @@ import React from "react";
 
 const columns = [
     { name: "NAME", uid: "name" },
-    { name: "ROLE", uid: "role" },
+    { name: "TEAM", uid: "team" },
     { name: "STATUS", uid: "status" },
     { name: "ACTIONS", uid: "actions" },
 ];

@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
-import { UserTable } from '../../../components/dashboard/Table/UserTable'
+import { CustomerTable } from '../../../components/dashboard/Table/CustomerTable';
 import { Input, useDisclosure, ModalContent, Modal, ModalHeader, Link, ModalBody, ModalFooter, Button, } from "@nextui-org/react";
 import { SearchIcon } from '../../../components/dashboard/navbar/SearchIcon'
 import { MailIcon, LockIcon, FilterIcon } from '../../../components/dashboard/icons/Icons';
-const user = () => {
+const customerTableView = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <>
@@ -13,7 +13,7 @@ const user = () => {
                 <div className="flex justify-center gap-4 xl:gap-12 pt-3 px-4 lg:px-0  flex-wrap xl:flex-nowrap sm:pt-2 max-w-[90rem] mx-auto w-full">
                     <div className="mt-6  gap-6 flex flex-col w-full">
                         <div className="flex  flex-wrap justify-between">
-                            <h3 className="text-center text-xl font-semibold">User Mulon</h3>
+                            <h3 className="text-center text-xl font-semibold">Semua Customer</h3>
                             <div className="justify-end flex flex-wrap flex-row gap-3">
 
                                 <Input
@@ -38,7 +38,7 @@ const user = () => {
                                 <Button size='sm' onPress={onOpen} color="primary">Tambah Pengguna</Button>
                             </div>
                         </div>
-                        <UserTable />
+                        <CustomerTable />
                     </div>
                 </div>
             </div>
@@ -90,5 +90,5 @@ const user = () => {
     )
 }
 
-export default user
+export default customerTableView;
 

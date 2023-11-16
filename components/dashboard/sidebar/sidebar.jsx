@@ -42,10 +42,10 @@ const SidebarWrapper = () => {
                         />
 
                         <SidebarItem
-                            isActive={router === "/payments"}
+                            isActive={router === "/admin/customer"}
                             title="Customer"
                             icon={<CustomersIcon />}
-                            href="#"
+                            href="/admin/customer"
                         />
                         <SidebarItem
                             isActive={router === "/admin/sorted"}
