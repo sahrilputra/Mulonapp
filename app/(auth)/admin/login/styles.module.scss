@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    height: 100vh;
+}
+
+.left {
+    display: flex;
+    flex: 2;
+    width: 300px;
+    flex-direction: column;
+    height: 100vh;
+    background-color: $green;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    justify-content: center;
+    gap: 30px;
+
+
+    .imageContainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.right {
+    display: flex;
+    flex: 5;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media screen and (max-width:860px) {
+    .left {
+        display: none;
+    }
+}

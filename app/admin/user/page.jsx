@@ -1,10 +1,21 @@
 "use client"
 import React from 'react'
 import { UserTable } from '../../../components/dashboard/Table/UserTable'
-import { Input, useDisclosure, ModalContent, Modal, ModalHeader, Link, ModalBody, ModalFooter, Button, } from "@nextui-org/react";
+import { Input, useDisclosure, ModalContent, Modal, ModalHeader, Link, ModalBody, ModalFooter, Button, Select, SelectItem } from "@nextui-org/react";
 import { SearchIcon } from '../../../components/dashboard/navbar/SearchIcon'
 import { MailIcon, LockIcon, FilterIcon } from '../../../components/dashboard/icons/Icons';
 const user = () => {
+    const teams = [
+        { lebel: "Technology", value: "technology" },
+        { lebel: "Operational", value: "operational" },
+        { lebel: "Marketing", value: "marketing" },
+        { lebel: "Sustain", value: "sustain" },
+        { lebel: "Human Resource", value: "hrd" },
+        { lebel: "Developer", value: "developer" },
+        { lebel: "Other", value: "other" },
+    ]
+
+    
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <>
@@ -53,10 +64,15 @@ const user = () => {
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Pengguna Baru</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Tambah Admin Baru</ModalHeader>
                             <ModalBody>
                                 <Input
                                     autoFocus
+                                    label="Name"
+                                    placeholder="Masukan Nama Lengkap"
+                                    variant="bordered"
+                                />
+                                <Input
                                     endContent={
                                         <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                                     }
@@ -73,6 +89,19 @@ const user = () => {
                                     type="password"
                                     variant="bordered"
                                 />
+                                <Select
+                                    size="sm"
+                                    label="Pilih Team"
+                                    className="max-w-xs"
+                                >
+                                    {teams.map((team) => (
+                                        <>
+                                            <SelectItem key={team.value} value={team.value}>
+                                                {team.lebel}
+                                            </SelectItem>
+                                        </>
+                                    ))}
+                                </Select>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" variant="flat" onPress={onClose}>
