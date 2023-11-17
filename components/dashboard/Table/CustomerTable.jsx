@@ -1,10 +1,7 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue } from "@nextui-org/react";
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
-
-import { columns, sampleCustomer } from '../../../models/customer';
-
 
 const statusColorMap = {
     active: "success",
@@ -12,39 +9,64 @@ const statusColorMap = {
     vacation: "warning",
 };
 
+const columns = [
+    { name: "NAME", uid: "name", label: "Name" },
+    { name: "USERNAME", uid: "username", label: "username" },
+    { name: "EMAIL", uid: "email", label: "Email" },
+    { name: "PHONE", uid: "phone", label: "Phone" },
+    { name: "ADDRESS", uid: "address", label: "Address" },
+    { name: "CREATE", uid: "createdAt", label: "Create At" },
+    { name: "HISTORY", uid: "history", label: "history" },
+    { name: "Action", uid: "actions", label: "Actions" },
+]
+
 export const CustomerTable = () => {
+
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/customer/customer');
+                const data = await response.json();
+                setUsers(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
     const renderCell = React.useCallback((user, columnKey) => {
         const cellValue = user[columnKey];
 
         switch (columnKey) {
-            case "username":
+            case "name":
                 return (
                     <User
                         avatarProps={{ radius: "none", src: user.avatar }}
-                        description={user.username}
+                        description={user.name}
                         name={cellValue}
                     >
                         {user.email}
                     </User>
                 );
-            case "email":
+            case "userName":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize text-default-400">{user.email}</p>
+                        <p className="text-bold text-sm capitalize text-default-400">{user.username}</p>
                     </div>
                 );
             case "phoneNumber":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize">{cellValue}</p>
                         <p className="text-bold text-sm capitalize text-default-400">{user.phoneNumber}</p>
                     </div>
                 );
-            case "address":
+            case "email":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize">{cellValue}</p>
-                        <p className="text-bold text-sm capitalize text-default-400">{user.address}</p>
+                        <p className="text-bold text-sm capitalize text-default-400">{user.email}</p>
                     </div>
                 );
             case "actions":
@@ -81,9 +103,9 @@ export const CustomerTable = () => {
                     </TableColumn>
                 )}
             </TableHeader>
-            <TableBody items={sampleCustomer}>
+            <TableBody items={users}>
                 {(item) => (
-                    <TableRow key={item.phoneNumber}>
+                    <TableRow key={item._id}>
                         {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
                     </TableRow>
                 )}

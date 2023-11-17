@@ -1,6 +1,9 @@
 "use client"
+
 import React, { useState, useMemo } from 'react'
+
 import { UserTable } from '../../../components/dashboard/Table/UserTable'
+
 import {
     Input,
     useDisclosure,
@@ -19,8 +22,6 @@ import { SearchIcon } from '../../../components/dashboard/navbar/SearchIcon'
 import { MailIcon, LockIcon, FilterIcon } from '../../../components/dashboard/icons/Icons';
 
 import axios from 'axios';
-
-
 
 const user = () => {
     const [isChipVisible, setIsChipVisible] = useState(false);

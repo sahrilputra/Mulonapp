@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const autoIncrement = require("mongodb-autoincrement");
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -18,6 +19,9 @@ const userSchema = new mongoose.Schema({
         required: "Masukan Password",
         minlength: 6,
     },
+    phone: {
+        type: String,
+    },
     role: {
         type: String,
         default: "user",
@@ -25,9 +29,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
     },
-    phoneNumber: {
-        type: Number,
-    },
+
     avatar: {
         type: String,
         default: "https://i.pravatar.cc/150",
@@ -67,9 +69,9 @@ const userSchema = new mongoose.Schema({
         {
             serviceType: { type: String, default: "" },
             collectionDate: { type: Date, default: Date.now },
-            trashType: { type: String, required: true },
-            weight: { type: Number, required: true },
-            price: { type: Number, required: true },
+            trashType: { type: String },
+            weight: { type: Number },
+            price: { type: Number },
             location: { type: String, default: "" }, // Alamat atau koordinat geografis
         },
     ],
@@ -85,9 +87,12 @@ const userSchema = new mongoose.Schema({
             type: String,
         },
     },
-    timeStamps: true,
+
+}, {
+    timestamps: true
 });
 
+// userSchema.plugin(autoIncrement.mongoosePlugin);
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 module.exports = User;
