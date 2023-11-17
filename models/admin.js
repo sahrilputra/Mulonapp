@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 
 const adminSchema = new mongoose.Schema({
-    fullname: { type: String },
+    name: {
+        type: String,
+        required: [true, "Masukan Nama"],
+    },
     email: {
         type: String,
-        required: "Masukan Email Anda",
+        required: [true, "Masukan Email Anda"],
         unique: true,
         trim: true,
         lowercase: true,
     },
     password: {
         type: String,
-        required: "Masukan Password",
-        minlength: 6,
+        required: [true, "Masukan Password"],
+        minlength: [6, "Password harus memiliki minimal 6 karakter"],
     },
     role: {
         type: String,

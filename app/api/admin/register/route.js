@@ -7,29 +7,24 @@ export async function POST(request) {
         await db.connectDb();
 
         if (request.method !== 'POST') {
-            return new Response(null, { status: 405 }); // Method Not Allowed
+            return NextResponse.error('Method Not Allowed', { status: 405 });
         }
 
-        const { name, email, team, password } = request.body;
+        const { name, email, team, password } = await request.json();
 
+        console.log(name);
         if (!name || !email || !password) {
-            return new Response(JSON.stringify({
-                message: "Lengkapi Formulir"
-            }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+            return NextResponse.error({ message: "Lengkapi Formulir" }, { status: 400 });
         }
 
         const admin = await Admin.findOne({ email });
 
         if (admin) {
-            return new Response(JSON.stringify({
-                message: "Email sudah terdaftar"
-            }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+            return NextResponse.error({ message: "Email sudah terdaftar" }, { status: 400 });
         }
 
         if (password.length < 6) {
-            return new Response(JSON.stringify({
-                message: "Password harus memiliki minimal 6 karakter"
-            }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+            return NextResponse.error({ message: "Password harus memiliki minimal 6 karakter" }, { status: 400 });
         }
 
         const newAdmin = new Admin({
@@ -43,15 +38,13 @@ export async function POST(request) {
         console.log(addAdmin);
         await db.disconnectDb();
 
-        return new Response(JSON.stringify({
+        return NextResponse.json({
             message: 'Pendaftaran berhasil',
             data: addAdmin
-        }), { status: 201, headers: { 'Content-Type': 'application/json' } });
+        }, { status: 201 });
 
     } catch (error) {
         console.error(error);
-        return new Response(JSON.stringify({
-            message: error.message
-        }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+        return NextResponse.error({ message: error.message }, { status: 500 });
     }
 }
