@@ -36,7 +36,7 @@ export async function POST(req) {
         console.log("NEW CUSTOMER : ", newCustomer);
 
         const addCustomer = await newCustomer.save();
-        
+
         console.log(addCustomer);
 
         return NextResponse.json({
@@ -48,4 +48,47 @@ export async function POST(req) {
         console.error(error);
         return NextResponse.error({ message: error.message }, { status: 500 });
     }
+}
+
+
+export async function DELETE(req) {
+    try {
+        await db.connectDb();
+
+        if (req.method !== "DELETE") {
+            return NextResponse.error("Method Not Allowed", { status: 405 });
+        }
+
+        const userId = req.query.id;
+
+        if (!userId) {
+            return NextResponse.error(
+                { message: "Missing user ID in the request" },
+                { status: 400 }
+            );
+        }
+
+        const deletedUser = await User.findByIdAndDelete(userId);
+
+        if (!deletedUser) {
+            return NextResponse.error(
+                { message: "User not found or already deleted" },
+                { status: 404 }
+            );
+        }
+
+        return NextResponse.json(
+            {
+                message: `User with ID ${userId} deleted successfully`,
+                data: deletedUser,
+            },
+            { status: 200 }
+        );
+
+
+    } catch (error) {
+        console.error(error);
+        return NextResponse.error({ message: error.message }, { status: 500 });
+    }
+
 }

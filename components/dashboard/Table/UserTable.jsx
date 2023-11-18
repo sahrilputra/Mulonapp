@@ -1,7 +1,24 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip } from "@nextui-org/react";
+import {
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
+    TableCell,
+    User,
+    Chip,
+    Tooltip,
+    Modal,
+    ModalBody,
+    ModalHeader,
+    ModalFooter,
+    useDisclosure,
+    Button
+} from "@nextui-org/react";
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
+import { DeleteModal } from '../../modal/DeleteModal';
 
 const statusColorMap = {
     active: "success",
@@ -19,7 +36,11 @@ const columns = [
 
 export const UserTable = () => {
 
+    const [selectedUser, setSelectedUser] = useState(null); // Track the selected user for deletion
+    const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [users, setUsers] = useState([]);
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,6 +56,15 @@ export const UserTable = () => {
     }, []);
 
     console.log(users);
+
+    const handleDeleteClick = (user) => {
+        setSelectedUser(user);
+        setDeleteModalOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setDeleteModalOpen(false);
+    };
 
     const renderCell = React.useCallback((item, columnKey) => {
         const cellValue = users[columnKey];
@@ -77,37 +107,50 @@ export const UserTable = () => {
                         </Tooltip>
                         <Tooltip content="Edit user">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <EditIcon />
+                                <Button className='bg-transparent'>
+                                    <EditIcon />
+                                </Button>
                             </span>
                         </Tooltip>
                         <Tooltip color="danger" content="Delete user">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                            <span className="text-lg text-danger cursor-pointer active:opacity-50"
+                                onClick={() => handleDeleteClick(item)}>
                                 <DeleteIcon />
                             </span>
                         </Tooltip>
-                    </div>
+                    </div >
                 );
             default:
-                return cellValue;
+                return item[columnKey];
         }
-    }, []);
+    }, [users, handleDeleteClick]);
 
     return (
-        <Table aria-label="User Admin Column">
-            <TableHeader columns={columns}>
-                {(column) => (
-                    <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
-                        {column.name}
-                    </TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={users}>
-                {(item) => (
-                    <TableRow key={item._id}>
-                        {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-                    </TableRow>
-                )}
-            </TableBody>
-        </Table>
+        <>
+            <Table aria-label="User Admin Column">
+                <TableHeader columns={columns}>
+                    {(column) => (
+                        <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
+                            {column.name}
+                        </TableColumn>
+                    )}
+                </TableHeader>
+                <TableBody items={users}>
+                    {(item) => (
+                        <TableRow key={item._id}>
+                            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+                        </TableRow>
+                    )}
+                </TableBody>
+            </Table>
+            {selectedUser && (
+                <DeleteModal
+                    isOpen={isDeleteModalOpen}
+                    onOpenChange={closeDeleteModal}
+                    user={selectedUser}
+                />
+            )}
+        </>
     );
 }
+
