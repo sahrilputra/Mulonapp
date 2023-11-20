@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
     Table,
     TableHeader,
@@ -41,21 +41,30 @@ export const UserTable = () => {
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [users, setUsers] = useState([]);
 
-    // const PATH = process.env.NEXT_BASE_URL;    
+    const [loading, setLoading] = useState(false);
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await fetch('/api/admin/list');
+            const data = await response.json();
+            setUsers(data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setLoading(false);
+        }
+    }, []);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`/api/admin/list`);
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
         fetchData();
-    }, []);
+        const intervalId = setInterval(() => {
+            setLoading(true);
+            fetchData();
+        }, 3000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [fetchData]);
 
 
     const handleDeleteClick = (user) => {
@@ -69,6 +78,11 @@ export const UserTable = () => {
 
     const renderCell = React.useCallback((item, columnKey) => {
         const cellValue = users[columnKey];
+
+        if (loading) {
+            // Display a skeleton loading indicator while data is being fetched
+            return <Skeleton width="80%" height="1rem" />;
+        }
 
         switch (columnKey) {
             case "name":
@@ -108,9 +122,7 @@ export const UserTable = () => {
                         </Tooltip>
                         <Tooltip content="Edit user">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <Button className='bg-transparent'>
-                                    <EditIcon />
-                                </Button>
+                                <EditIcon />
                             </span>
                         </Tooltip>
                         <Tooltip color="danger" content="Delete user">

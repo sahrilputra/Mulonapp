@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue } from "@nextui-org/react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue, Skeleton } from "@nextui-org/react";
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
 
 const statusColorMap = {
@@ -24,22 +24,40 @@ export const CustomerTable = () => {
 
 
     const [users, setUsers] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/api/user/list');
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
+    const [loading, setLoading] = useState(true);
+
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await fetch('/api/user/list');
+            const data = await response.json();
+            setUsers(data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setLoading(false);
+        }
     }, []);
 
-    const renderCell = React.useCallback((user, columnKey) => {
+    useEffect(() => {
+        fetchData();
+        const intervalId = setInterval(() => {
+            setLoading(true);
+            fetchData();
+        }, 3000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [fetchData]);
+
+
+    const renderCell = useCallback((user, columnKey) => {
         const cellValue = user[columnKey];
 
+        if (loading) {
+            // Display a skeleton loading indicator while data is being fetched
+            return <Skeleton width="80%" height="1rem" />;
+        }
         switch (columnKey) {
             case "name":
                 return (
@@ -92,7 +110,7 @@ export const CustomerTable = () => {
             default:
                 return cellValue;
         }
-    }, []);
+    }, [loading]);
 
     return (
         <Table aria-label="Example table with custom cells">

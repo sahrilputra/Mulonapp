@@ -27,6 +27,7 @@
     "mongodb-autoincrement": "^1.0.1",
     "mongoose": "^8.0.0",
     "next": "14.0.1",
+    "next-auth": "^4.24.5",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
