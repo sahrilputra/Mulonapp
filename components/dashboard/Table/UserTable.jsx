@@ -46,7 +46,7 @@ export const UserTable = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/admin/user`);
+                const response = await fetch(`/api/admin/list`);
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {

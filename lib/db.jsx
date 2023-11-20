@@ -2,7 +2,6 @@ import mongoose, { mongo } from "mongoose";
 const connection = {};
 
 async function connectDb() {
-    console.log(process.env.MONGODB_URL);
     if (connection.isConnected) {
         console.log("Already connected to the database.");
         return;
