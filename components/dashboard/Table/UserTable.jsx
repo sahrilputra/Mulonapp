@@ -20,6 +20,7 @@ import {
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
 import { DeleteModal } from '../../modal/DeleteModal';
 
+
 const statusColorMap = {
     active: "success",
     paused: "danger",
@@ -40,11 +41,12 @@ export const UserTable = () => {
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [users, setUsers] = useState([]);
 
+    // const PATH = process.env.NEXT_BASE_URL;    
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/admin/user');
+                const response = await fetch(`/api/admin/user`);
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {
@@ -55,7 +57,6 @@ export const UserTable = () => {
         fetchData();
     }, []);
 
-    console.log(users);
 
     const handleDeleteClick = (user) => {
         setSelectedUser(user);

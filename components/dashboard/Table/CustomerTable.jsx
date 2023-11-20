@@ -27,7 +27,7 @@ export const CustomerTable = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/customer/customer');
+                const response = await fetch('/api/user/list');
                 const data = await response.json();
                 setUsers(data);
             } catch (error) {

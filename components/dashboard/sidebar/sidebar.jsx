@@ -12,7 +12,6 @@ import styles from './styles.module.scss';
 const SidebarWrapper = () => {
     const router = usePathname();
     const { collapsed, setCollapsed } = useSidebarContext();
-    console.log(router);
 
     return (
         <>

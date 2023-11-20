@@ -27,12 +27,10 @@ export default function DashboardLayout({ children }) {
     }, [isDesktopLarge, isTabletMed]);
 
     const handleToggleSidebar = () => {
-        console.log("Toggling Sidebar");
         setSidebarOpen(!sidebarOpen);
     };
 
     const handleChildrenClick = () => {
-        console.log("children clicked")
         if (!isTabletMed && !sidebarOpen) {
             setSidebarOpen(true);
         }
