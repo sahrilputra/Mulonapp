@@ -48,3 +48,45 @@ export async function POST(request) {
         return NextResponse.error({ message: error.message }, { status: 500 });
     }
 }
+
+
+export async function DELETE(req) {
+    try {
+        await db.connectDb();
+
+        if (req.method !== 'DELETE') {
+            return NextResponse.error('Method Not Allowed', { status: 405 });
+        }
+
+        const userId = await req.json();
+        console.log(userId);
+
+
+
+        if (!userId) {
+            return NextResponse.error(
+                { message: 'Missing user ID in the request' },
+                { status: 400 }
+            );
+        }
+        const findUser = await Admin.findOneAndDelete(userId);
+        console.log("user finder", findUser);
+
+        if (!findUser) {
+            return NextResponse.error(
+                { message: 'User not found or already deleted' },
+                { status: 404 }
+            );
+        }
+        return NextResponse.json(
+            {
+                message: `User with ID ${findUser._id} deleted successfully`,
+                data: findUser,
+            },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error(error);
+        return NextResponse.error({ message: error.message }, { status: 500 });
+    }
+}

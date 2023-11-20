@@ -12,13 +12,12 @@ import styles from './styles.module.scss';
 const SidebarWrapper = () => {
     const router = usePathname();
     const { collapsed, setCollapsed } = useSidebarContext();
-    console.log(router);
 
     return (
         <>
 
             {/* <div className={styles.sidebarComponetns}> </div>*/}
-            <aside className={`h-screen z-[202] sticky top-0 flex justify-center border-r-3 ${styles.sidebars}`}>
+            <aside className={`h-screen z-[1] sticky top-0 flex justify-center border-r-3 ${styles.sidebars}`}>
                 <div onClick={() => setCollapsed(false)} />
                 <div className={`flex gap-3 flex-col ${styles.wrapper}`}>
                     <div className="flex p-2 justify-start align-middle mt-2 ">

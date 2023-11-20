@@ -1,7 +1,25 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip } from "@nextui-org/react";
+import React, { useState, useEffect, useCallback } from 'react'
+import {
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
+    TableCell,
+    User,
+    Chip,
+    Tooltip,
+    Modal,
+    ModalBody,
+    ModalHeader,
+    ModalFooter,
+    useDisclosure,
+    Button
+} from "@nextui-org/react";
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
+import { DeleteModal } from '../../modal/DeleteModal';
+
 
 const statusColorMap = {
     active: "success",
@@ -19,25 +37,52 @@ const columns = [
 
 export const UserTable = () => {
 
+    const [selectedUser, setSelectedUser] = useState(null); // Track the selected user for deletion
+    const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
     const [users, setUsers] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/api/admin/user');
-                const data = await response.json();
-                setUsers(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
 
-        fetchData();
+    const [loading, setLoading] = useState(false);
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await fetch('/api/admin/list');
+            const data = await response.json();
+            setUsers(data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setLoading(false);
+        }
     }, []);
 
-    console.log(users);
+    useEffect(() => {
+        fetchData();
+        const intervalId = setInterval(() => {
+            setLoading(true);
+            fetchData();
+        }, 3000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [fetchData]);
+
+
+    const handleDeleteClick = (user) => {
+        setSelectedUser(user);
+        setDeleteModalOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setDeleteModalOpen(false);
+    };
 
     const renderCell = React.useCallback((item, columnKey) => {
         const cellValue = users[columnKey];
+
+        if (loading) {
+            // Display a skeleton loading indicator while data is being fetched
+            return <Skeleton width="80%" height="1rem" />;
+        }
 
         switch (columnKey) {
             case "name":
@@ -81,33 +126,44 @@ export const UserTable = () => {
                             </span>
                         </Tooltip>
                         <Tooltip color="danger" content="Delete user">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                            <span className="text-lg text-danger cursor-pointer active:opacity-50"
+                                onClick={() => handleDeleteClick(item)}>
                                 <DeleteIcon />
                             </span>
                         </Tooltip>
-                    </div>
+                    </div >
                 );
             default:
-                return cellValue;
+                return item[columnKey];
         }
-    }, []);
+    }, [users, handleDeleteClick]);
 
     return (
-        <Table aria-label="User Admin Column">
-            <TableHeader columns={columns}>
-                {(column) => (
-                    <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
-                        {column.name}
-                    </TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={users}>
-                {(item) => (
-                    <TableRow key={item._id}>
-                        {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-                    </TableRow>
-                )}
-            </TableBody>
-        </Table>
+        <>
+            <Table aria-label="User Admin Column">
+                <TableHeader columns={columns}>
+                    {(column) => (
+                        <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
+                            {column.name}
+                        </TableColumn>
+                    )}
+                </TableHeader>
+                <TableBody items={users}>
+                    {(item) => (
+                        <TableRow key={item._id}>
+                            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+                        </TableRow>
+                    )}
+                </TableBody>
+            </Table>
+            {selectedUser && (
+                <DeleteModal
+                    isOpen={isDeleteModalOpen}
+                    onOpenChange={closeDeleteModal}
+                    user={selectedUser}
+                />
+            )}
+        </>
     );
 }
+
