@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react'
 
 import { UserTable } from '../../../components/dashboard/Table/UserTable'
-
+import { AdminDeleteModals } from '../../../components/modal/admin/DeleteModals';
 import {
     Input,
     useDisclosure,
@@ -17,10 +17,11 @@ import {
     Select,
     SelectItem,
     Chip,
+    Spinner,
 } from "@nextui-org/react";
 import { SearchIcon } from '../../../components/dashboard/navbar/SearchIcon'
 import { MailIcon, LockIcon, FilterIcon } from '../../../components/dashboard/icons/Icons';
-
+import AdminAddModal from '../../../components/modal/admin/AdminAddModal';
 import axios from 'axios';
 
 const user = () => {
@@ -51,44 +52,48 @@ const user = () => {
 
 
     const [newUser, setNewUser] = useState({
-        name: '',
+        username: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         team: '',
     });
 
-    const [feedback, setFeedback] = useState({
-        message: '',
-        type: '', // 'success' atau 'error'
-    });
+    const [feedback, setFeedback] = useState("");
 
-    const handleInputChange = (key, value) => {
-        setNewUser({
-            ...newUser,
-            [key]: value,
-        });
+    const [selectedTeam, setSelectedTeam] = useState('');
+
+    const handleTeamChange = (value) => {
+        setSelectedTeam(value.target.value); // Menggunakan value.target.value
+        handleInputChange('team', value.target.value);
     };
 
+    const [response, setResponse] = useState("");
+    const [loading, setLoading] = useState(false);
 
+    const handleInputChange = (key, value) => {
+        setNewUser((prevUser) => ({
+            ...prevUser,
+            [key]: value,
+        }));
+        console.log("After : ", value);
+    };
     const handleSaveClick = async () => {
         try {
+            setLoading(true);
             const response = await axios.post('/api/admin/register', newUser);
-            console.log(response.data);
+            if (response.ok) {
+                setFeedback("Berhasil Menambahkan Pengguna");
 
-            setFeedback({
-                message: 'Sukses menambahkan data',
-                type: 'success',
-            });
-            setIsChipVisible(true);
+            } else {
+                setFeedback(response.statusText);
+            }
         } catch (error) {
-            console.log(error);
-            setFeedback({
-                message: 'Gagal menambahkan data. Cek kembali formulir Anda.',
-                type: 'error',
-            });
-            setIsChipVisible(true);
+            setFeedback(error.message);
+        } finally {
+            setLoading(false);
         }
-        onClose();
     };
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
@@ -135,77 +140,19 @@ const user = () => {
             </div>
 
 
-            <Modal
+            <AdminAddModal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
-                placement="bottom-center"
-                backdrop='blur'
-            >
-                <ModalContent>
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1">Tambah Admin Baru</ModalHeader>
-                            <ModalBody>
-                                <Input
-                                    autoFocus
-                                    isRequired
-                                    label="Name"
-                                    placeholder="Masukan Nama Lengkap"
-                                    variant="bordered"
-                                    value={newUser.name}
-                                    onChange={(e) => handleInputChange('name', e.target.value)}
-                                />
-                                <Select
-                                    size="sm"
-                                    label="Pilih Team"
-                                    value={newUser.team}
-                                    onchange={(value) => handleInputChange('team', value)}
-                                >
-                                    {teams.map((team) => (
-                                        <SelectItem key={team.value} value={team.value}>
-                                            {team.lebel}
-                                        </SelectItem>
-                                    ))}
-                                </Select>
-                                <Input
-                                    isRequired
-                                    endContent={
-                                        <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                    }
-                                    label="Email"
-                                    type='email'
-                                    placeholder="Masukan Email"
-                                    // isInvalid={isInvalid}
-                                    // color={isInvalid ? "danger" : "success"}
-                                    variant="bordered"
-                                    value={newUser.email}
-                                    onChange={(e) => handleInputChange('email', e.target.value)}
-                                />
-                                <Input
-                                    endContent={
-                                        <LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                    }
-                                    label="Password"
-                                    placeholder="Masukan Password"
-                                    type="password"
-                                    variant="bordered"
-                                    value={newUser.password}
-                                    onChange={(e) => handleInputChange('password', e.target.value)}
-                                />
-
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="danger" variant="flat" onPress={onClose}>
-                                    Close
-                                </Button>
-                                <Button color="primary" onPress={handleSaveClick}>
-                                    Save
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
-                </ModalContent>
-            </Modal>
+                onSaveClick={handleSaveClick}
+                onClose={onClose}
+                loading={loading}
+                feedback={feedback}
+                teams={teams}
+                newUser={newUser}
+                selectedTeam={selectedTeam}
+                handleInputChange={handleInputChange}
+                handleTeamChange={handleTeamChange}
+            />
         </>
     )
 }

@@ -47,7 +47,6 @@ export default function DashboardLayout({ children }) {
                     <div
                         className={`
                             ${sidebarOpen ? (styles.hidden) : (styles.open)} 
-                            ${isTabletMed ? (styles.sidebar) : (styles.absolute)}
                     `}>
                         <SidebarWrapper />
                     </div>

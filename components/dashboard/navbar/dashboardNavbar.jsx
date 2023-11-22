@@ -44,7 +44,7 @@ export default function NavbarWrapper({ children }) {
         <>
             <div className={styles.navbarWrapper}>
                 <Navbar isBordered className="">
-                    {isTabletMed ? (
+                    {isDesktopLarge ? (
                         <></>
                     ) : (
                         <Button
