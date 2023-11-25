@@ -2,6 +2,7 @@ import './styles/globals.styles.scss'
 import FootersIndex from '../components/footers/Footer'
 import TestNavbars from '../components/navbars/Navbar';
 import { Providers } from "./providers";
+import { Analytics } from '@vercel/analytics/react';
 
 import DashboardPage from '../ui/DashboardLayout';
 import LandingLayout from '../ui/LadingLayout';
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           {children}
+          <Analytics />
         </Providers>
       </body>
     </html>
