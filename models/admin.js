@@ -1,10 +1,17 @@
 const mongoose = require('mongoose');
 
 const adminSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
-        required: [true, "Masukan Nama"],
+        required: [true, "Masukan Username"],
     },
+    firstName: {
+        type: String,
+    },
+    lastName: {
+        type: String,
+    },
+
     email: {
         type: String,
         required: [true, "Masukan Email Anda"],
@@ -19,7 +26,7 @@ const adminSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        default: "admin",
+        default: "IAM",
     },
     team: {
         type: String,
@@ -29,7 +36,25 @@ const adminSchema = new mongoose.Schema({
         type: String,
         default: "https://i.pravatar.cc/150",
     },
+    phone: {
+        type: Number,
+    },
+    socialMedia: {
+        linkedIn: {
+            type: String,
+        },
+        instagram: {
+            type: String,
+        },
+        facebook: {
+            type: String,
+        }
+    },
 
+    history: {
+        type: [{ action: String, timestamp: { type: Date, default: Date.now } }],
+        default: [],
+    },
 },
     {
         timestamps: true

@@ -15,12 +15,13 @@ import {
     ModalHeader,
     ModalFooter,
     useDisclosure,
-    Button
+    Button,
+    Skeleton,
 } from "@nextui-org/react";
 import { EditIcon, DeleteIcon, EyeIcon } from '../icons/Icons';
-import { DeleteModal } from '../../modal/DeleteModal';
-
-
+// import { DeleteModal } from '../../modal/DeleteModal';
+import { AdminDeleteModals } from '../../modal/admin/DeleteModals';
+import Link from 'next/link';
 const statusColorMap = {
     active: "success",
     paused: "danger",
@@ -89,8 +90,8 @@ export const UserTable = () => {
                 return (
                     <User
                         avatarProps={{ radius: "lg", src: item.avatar }}
-                        description={item.name}
-                        name={item.name}
+                        description={item.username}
+                        name={item.firstName}
                     >
                     </User>
                 );
@@ -117,7 +118,9 @@ export const UserTable = () => {
                     <div className="relative flex items-center gap-2">
                         <Tooltip content="Details">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <EyeIcon />
+                                <Link href={`/admin/user/${item._id}`}>
+                                    <EyeIcon />
+                                </Link>
                             </span>
                         </Tooltip>
                         <Tooltip content="Edit user">
@@ -157,7 +160,7 @@ export const UserTable = () => {
                 </TableBody>
             </Table>
             {selectedUser && (
-                <DeleteModal
+                <AdminDeleteModals
                     isOpen={isDeleteModalOpen}
                     onOpenChange={closeDeleteModal}
                     user={selectedUser}

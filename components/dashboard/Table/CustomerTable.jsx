@@ -72,19 +72,19 @@ export const CustomerTable = () => {
             case "userName":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize text-default-400">{user.username}</p>
+                        <p className="text-bold text-sm  text-default-400">{user.username}</p>
                     </div>
                 );
             case "phoneNumber":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize text-default-400">{user.phoneNumber}</p>
+                        <p className="text-bold text-sm  text-default-400">{user.phoneNumber}</p>
                     </div>
                 );
             case "email":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize text-default-400">{user.email}</p>
+                        <p className="text-bold text-sm text-default-400">{user.email}</p>
                     </div>
                 );
             case "actions":
