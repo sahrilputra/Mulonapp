@@ -1,9 +1,8 @@
 <!-- # ------------ DATABASE ------------------------
-MONGODB_URL=mongodb+srv://Sahrilputra:uLb4htiuCo9d9l1R@muloncluster.dtzswpc.mongodb.net/Mulon
+MONGODB_URL=
 
 #------------- CONFIG --------------------------
-BASE_URL= http://localhost:3000
-
+BASE_URL= 
 # --------------- AUTH -------------------------
 GITHUB_ID=
 GITHUB_SECRET=
