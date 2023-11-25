@@ -197,11 +197,11 @@ const AdminSettings = () => {
 
             <div className={`${styles.forms} justify-center align-middle`}>
                 <p>Description</p>
-                <input type="text"
+                <input
+                    type="text"
                     label="Deskripsi"
                     placeholder="Desc"
                     variant="bordered"
-                    value=""
                 />
 
             </div>

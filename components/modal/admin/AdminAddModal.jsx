@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter, ModalContent, Button, Spinner, Input, Select, SelectItem, Chip } from "@nextui-org/react";
 import { MailIcon, LockIcon } from '../../dashboard/icons/Icons';
-const AdminAddModal = ({ isOpen, onOpenChange, onSaveClick, onClose, loading, feedback, teams, newUser, selectedTeam, handleInputChange, handleTeamChange }) => {
+import * as Yup from 'yup';
+import { Formik, useFormik } from 'formik';
+import validation from '../../../utils/validation';
+
+const AdminAddModal = ({ isOpen, onOpenChange, onSaveClick, onClose, loading, feedback, teams, newUser, selectedTeam, handleInputChange, handleTeamChange, formik }) => {
+
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="bottom-center" backdrop='blur'>
       <ModalContent>
@@ -19,31 +24,33 @@ const AdminAddModal = ({ isOpen, onOpenChange, onSaveClick, onClose, loading, fe
                     label="username"
                     placeholder="Masukan User Username"
                     variant="bordered"
-                    value={newUser.username}
-                    onChange={(e) => handleInputChange('username', e.target.value)}
+                    {...formik.getFieldProps('username')}
+                    errorMessage={formik.touched.username && formik.errors.username}
                   />
                   <Input
                     isRequired
                     label="Nama Depan"
                     placeholder="Masukan Nama Depan"
                     variant="bordered"
-                    value={newUser.firstName}
-                    onChange={(e) => handleInputChange('firstName', e.target.value)}
+                    {...formik.getFieldProps('firstName')}
+                    errorMessage={formik.touched.firstName && formik.errors.firstName}
                   />
                   <Input
                     isRequired
                     label="Nama Belakang"
                     placeholder="Masukan Nama Belakang"
                     variant="bordered"
-                    value={newUser.lastName}
-                    onChange={(e) => handleInputChange('lastName', e.target.value)}
+                    {...formik.getFieldProps('lastName')}
+                    errorMessage={formik.touched.lastName && formik.errors.lastName}
                   />
                   <Select
                     size="sm"
                     label="Pilih Team"
                     value={selectedTeam}
                     variant="bordered"
-                    onChange={(value) => handleTeamChange(value)}
+
+                    {...formik.getFieldProps('team')}
+                    errorMessage={formik.touched.team && formik.errors.eteamail}
                   >
                     {teams.map((team) => (
                       <SelectItem key={team.value} value={team.value}>
@@ -58,8 +65,10 @@ const AdminAddModal = ({ isOpen, onOpenChange, onSaveClick, onClose, loading, fe
                     type='email'
                     placeholder="Masukan Email"
                     variant="bordered"
-                    value={newUser.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    {...formik.getFieldProps('email')}
+                    errorMessage={formik.touched.email && formik.errors.email}
+                  // value={newUser.email}
+                  // onChange={(e) => handleInputChange('email', e.target.value)}
                   />
                   <Input
                     endContent={<LockIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
@@ -67,19 +76,21 @@ const AdminAddModal = ({ isOpen, onOpenChange, onSaveClick, onClose, loading, fe
                     placeholder="Masukan Password"
                     type="password"
                     variant="bordered"
-                    value={newUser.password}
-                    onChange={(e) => handleInputChange('password', e.target.value)}
+                    {...formik.getFieldProps('password')}
+                    errorMessage={formik.touched.password && formik.errors.password}
+                  // value={newUser.password}
+                  // onChange={(e) => handleInputChange('password', e.target.value)}
                   />
                 </>
               )}
             </ModalBody>
             <ModalFooter>
-              {!loading && !feedback && (
+              {!formik.isSubmitting && !formik.status && !loading && !feedback && (
                 <>
                   <Button color="danger" variant="flat" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="primary" onPress={onSaveClick}>
+                  <Button color="primary" onPress={formik.handleSubmit}>
                     Save
                   </Button>
                 </>

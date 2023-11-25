@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useCallback, useState, useEffect } from "react"
 import {
     Card,
     CardBody,
@@ -11,23 +12,36 @@ import {
     BreadcrumbItem
 } from "@nextui-org/react";
 import { GoMail } from "react-icons/go";
-
 import { HiOutlineMail } from "react-icons/hi";
 import { PiUserThin } from "react-icons/pi";
 import { LiaFacebook, LiaInstagram, LiaLinkedinIn } from "react-icons/lia";
-import AdminContent from '../../../../components/profiles/admin/content';
-export default function adminProfiles() {
+import AdminContent from "../../../../components/profiles/admin/content";
+
+export default function Page({ params }) {
+
+    console.log(params.slug);
+
+    const [user, setUser] = useState("");
+
+    const fetchData = useCallback(async () => {
+        try {
+            const response = await fetch(`/api/admin/${params.slug}`);
+            const data = await response.json();
+
+            setUser(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+    if (!user) {
+        return <div>User not found</div>;
+    }
     return (
         <>
-            <div>
-                <Breadcrumbs>
-                    <BreadcrumbItem>Home</BreadcrumbItem>
-                    <BreadcrumbItem>Music</BreadcrumbItem>
-                    <BreadcrumbItem>Artist</BreadcrumbItem>
-                    <BreadcrumbItem>Album</BreadcrumbItem>
-                    <BreadcrumbItem>Song</BreadcrumbItem>
-                </Breadcrumbs>
-            </div>
             <div className="mx-auto w-full">
                 <Card
                     isBlurred
@@ -42,7 +56,7 @@ export default function adminProfiles() {
                                     className="object-cover"
                                     height={100}
                                     shadow="md"
-                                    src="https://i.pravatar.cc/500"
+                                    src={`${user.avatar}`}
                                     width="100%"
                                 />
                             </div>
@@ -50,20 +64,23 @@ export default function adminProfiles() {
                             <div className="flex flex-col col-span-6 md:col-span-8">
                                 <div className="flex justify-between items-start">
                                     <div className="flex flex-col gap-0">
-                                        <h3 className="font-semibold text-foreground/90">Name</h3>
+                                        <h3 className="font-semibold text-foreground/90">{user.username}</h3>
+                                        <p className='text-medium text-foreground/80 '>
+                                            {user.firstName}    {user.lastName}
+                                        </p>
                                         <span className="text-small text-foreground/80 flex align-middle gap-3 my-3 flex-row">
                                             <PiUserThin size={20} className='text-small text-foreground/80 ' />
                                             <p className='text-small text-foreground/80 '>
-                                                Team
+                                                {user.team}
                                             </p>
                                         </span>
 
                                         <div className="flex flex-row gap-8">
                                             <p className="text-small text-foreground/80 flex align-middle justify-center gap-3 flex-row">
-                                                <PiUserThin size={20} /> Phone
+                                                <PiUserThin size={20} /> +62
                                             </p>
                                             <p className="text-small text-foreground/80 flex align-middle justify-center  gap-3 flex-row">
-                                                <GoMail size={20} className='text-small text-foreground/80' /> Email
+                                                <GoMail size={20} className='text-small text-foreground/80' />{user.email}
                                             </p>
                                         </div>
                                         <h1 className="text-sm font-normal mt-2">
@@ -109,5 +126,5 @@ export default function adminProfiles() {
                 <AdminContent className="w-full" />
             </div>
         </>
-    );
+    )
 }
