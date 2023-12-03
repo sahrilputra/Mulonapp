@@ -1,6 +1,5 @@
 import React from 'react'
-import { Modal, ModalBody, ModalFooter, ModalContent, Button } from '@nextui-org/react'
-import { Button } from 'flowbite-react'
+import { Modal, ModalBody, ModalFooter, ModalContent, Button, ModalHeader } from '@nextui-org/react'
 export const DeleteModal = () => {
     return (
         <>

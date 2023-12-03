@@ -21,7 +21,7 @@ import styles from './styles.module.scss';
 import { Alert } from "flowbite-react";
 import axios from 'axios';
 
-const sordetPlace = () => {
+const SordetPlace = () => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [feedback, setFeedback] = useState({
         message: '',
@@ -205,4 +205,4 @@ const sordetPlace = () => {
     )
 }
 
-export default sordetPlace;
+export default SordetPlace;

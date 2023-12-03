@@ -19,7 +19,7 @@ import * as Yup from 'yup';
 import validation from '../../../utils/validation';
 import axios from 'axios';
 
-const user = () => {
+const User = () => {
     const [isChipVisible, setIsChipVisible] = useState(false);
     const handleClose = () => {
         setIsChipVisible(false);
@@ -161,5 +161,5 @@ const user = () => {
     )
 }
 
-export default user
+export default User
 

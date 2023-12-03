@@ -32,11 +32,11 @@ export default function Page({ params }) {
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-    }, []);
+    },);
 
     useEffect(() => {
         fetchData();
-    }, [])
+    },)
     if (!user) {
         return <div>User not found</div>;
     }

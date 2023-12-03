@@ -17,7 +17,7 @@ import {
 import axios from 'axios';
 import { SearchIcon } from '../../../components/dashboard/navbar/SearchIcon'
 import { MailIcon, LockIcon, FilterIcon } from '../../../components/dashboard/icons/Icons';
-const customerTableView = () => {
+const CustomerTableView = () => {
     const [isChipVisible, setIsChipVisible] = useState(false);
     const handleClose = () => {
         setIsChipVisible(false);
@@ -187,5 +187,5 @@ const customerTableView = () => {
     )
 }
 
-export default customerTableView;
+export default CustomerTableView;
 

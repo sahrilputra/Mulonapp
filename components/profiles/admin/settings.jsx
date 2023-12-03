@@ -43,6 +43,7 @@ const AdminSettings = () => {
                             color="primary"
                             radius="lg"
                             src="https://i.pravatar.cc/300?u=a042581f4e290267072"
+                            alt="user image"
                         />
                     </Badge>
                 </div>
@@ -76,7 +77,7 @@ const AdminSettings = () => {
                             label="Teams"
                         >
                             {teams.map((team) => (
-                                <SelectItem>
+                                <SelectItem key={team.value}>
                                     {team.lebel}
                                 </SelectItem>
                             ))}
@@ -126,7 +127,7 @@ const AdminSettings = () => {
                         label="Provinsi"
                     >
                         {prov.map((prov) => (
-                            <SelectItem>
+                            <SelectItem key={prov.lebel}>
                                 {prov.lebel}
                             </SelectItem>
                         ))}
@@ -137,7 +138,7 @@ const AdminSettings = () => {
                         label="Kota/Kab"
                     >
                         {city.map((city) => (
-                            <SelectItem>
+                            <SelectItem key={city.lebel}>
                                 {city.lebel}
                             </SelectItem>
                         ))}
