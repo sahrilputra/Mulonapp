@@ -32,7 +32,6 @@ export async function POST(req) {
         user.trashHistory.push(trashHistoryEntry)
         console.log(user);
         await user.save();
-        await db.disconnectDb();
 
         return NextResponse.json({
             message: 'Data berhasil ditambahkan ke trashHistory',

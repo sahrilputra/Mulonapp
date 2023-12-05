@@ -16,7 +16,6 @@ export async function GET(request, { params }) {
         // Use findOne to find a user by ID or username
         const user = await Admin.findOne(query);
 
-        await db.disconnectDb();
 
         // Check if the user was found
         if (!user) {
@@ -51,7 +50,6 @@ export async function DELETE(request, { params }) {
         // Use findOneAndDelete to find and delete a user by ID or username
         const deletedUser = await Admin.findOneAndDelete(query);
 
-        await db.disconnectDb();
 
         // Check if the user was found and deleted
         if (!deletedUser) {
@@ -88,7 +86,6 @@ export async function PUT(request, { param, body }) {
             new: true, // Return the modified document rather than the original
         });
 
-        await db.disconnectDb();
 
         // Check if the user was found and updated
         if (!updatedUser) {

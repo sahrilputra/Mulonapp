@@ -39,9 +39,6 @@ export async function POST(request) {
         });
 
         const addAdmin = await newAdmin.save();
-        console.log(addAdmin);
-        await db.disconnectDb();
-
         return NextResponse.json({
             message: 'Pendaftaran berhasil',
             data: addAdmin

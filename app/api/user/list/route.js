@@ -9,7 +9,6 @@ export async function GET(request) {
 
         const user = await User.find();
 
-        await db.disconnectDb();
 
         return new NextResponse(JSON.stringify(user), {
             headers: {

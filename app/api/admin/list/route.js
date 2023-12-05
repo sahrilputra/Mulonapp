@@ -6,14 +6,12 @@ export async function GET(request) {
 
     try {
         await db.connectDb();
-
         const user = await Admin.find();
-
-        await db.disconnectDb();
 
         return new NextResponse(JSON.stringify(user), {
             headers: {
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
             },
         });
 

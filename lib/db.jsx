@@ -43,7 +43,33 @@
 
 import mongoose from "mongoose";
 
-mongoose.connect(process.env.MONGODB_URI, {
-    bufferMaxEntries:   0,
-    reconnectTries:     5000,
-})
+const connect = { isConnection: false }
+
+async function connectDb() {
+    if (connect.isConnection) {
+        console.log("Already Connected");
+        return
+    }
+    try {
+        await mongoose.connect(process.env.MONGODB_URI)
+        connect.isConnection = true;
+    } catch (error) {
+        console.log("error by Connected : ", error)
+    }
+}
+
+async function disconnectedDb() {
+    try {
+        if (connect.isConnection) {
+            await mongoose.disconnect();
+            console.log("disconnectDB");
+            connect.isConnection = false;
+        }
+    } catch (error) {
+        console.log("erorr : ", error);
+    }
+}
+
+connectDb();
+const db = { connectDb, disconnectedDb };
+export default db; 
