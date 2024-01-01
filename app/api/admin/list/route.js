@@ -1,7 +1,7 @@
 import db from "../../../../lib/db";
 import Admin from "../../../../models/admin";
 import { NextResponse } from "next/server"
-
+export const dynamic = 'force-dynamic'
 export async function GET(request) {
 
     try {

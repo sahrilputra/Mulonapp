@@ -35,7 +35,11 @@ export async function POST(req) {
 
         return NextResponse.json({
             message: 'Data berhasil ditambahkan ke trashHistory',
-            data: user
+            data: user,
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
         }, { status: 201 });
 
     } catch (error) {

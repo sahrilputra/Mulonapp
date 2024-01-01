@@ -1,11 +1,11 @@
 import db from "../../../../lib/db";
 import Admin from "../../../../models/admin";
 import { NextResponse } from "next/server"
-
+export const dynamic = 'force-dynamic'
 export async function POST(request) {
     try {
         await db.connectDb();
-
+        
         if (request.method !== 'POST') {
             return NextResponse.error('Method Not Allowed', { status: 405 });
         }
@@ -13,11 +13,12 @@ export async function POST(request) {
         const { username, firstName, lastName, email, team, password } = await request.json();
 
         console.log(username, firstName, lastName, email, team, password);
-
+       
 
         if (!username || !email || !password) {
             return NextResponse.error({ message: "Lengkapi Formulir" }, { status: 400 });
         }
+
 
         const admin = await Admin.findOne({ email });
 
@@ -39,9 +40,15 @@ export async function POST(request) {
         });
 
         const addAdmin = await newAdmin.save();
+        console.log(addAdmin);
+  
         return NextResponse.json({
             message: 'Pendaftaran berhasil',
-            data: addAdmin
+            data: addAdmin,
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
         }, { status: 201 });
 
     } catch (error) {
